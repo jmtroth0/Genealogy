@@ -6,13 +6,12 @@ Genealogy is a place to store information about your family
 - [ ] Create accounts
 - [ ] Log in and out
 - [ ] Add family members
+- [ ] View added family members
 - [ ] Auto send info to Family Echo on request
 - [ ] View family tree on Family Echo
-- [ ] Add Family Stories
-- [ ] Tag Family Members in Family Stories
-- [ ] Upload photos, pdf files, audio, video using paperclip
-- [ ] Pages to view uploads
-- [ ] Tag uploads
+- [ ] Add text-based family stories
+- [ ] Upload photos, PDF files, audio, video using paperclip
+- [ ] Pages to view other things
 
 ## Design Docs
 * [DB schema][schema]
@@ -47,4 +46,5 @@ Build page for teacher to use to post guides. Talk to mom about the form and
 quantity of these --> Could end up being set # saved in server.
 
 ### Bonus Features (TBD)
-- [ ] Create own family tree engine using google visualization, dracula, or equivalent
+- [ ] Create own family tree engine using Google Visualization, Dracula, or equivalent
+- [ ] Tag Family Members in Family Stories and Photos
