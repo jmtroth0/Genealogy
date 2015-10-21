@@ -9,6 +9,7 @@ username          | string    | not null
 fname             | string    |
 lname             | string    |
 password_digest   | string    | not null
+session_token     | string    | not null
 family_member_id  | integer   | foreign key (references family_member)
 family_tree       | string    | will be a url referencing Family Echo
 tree_expiration   | date      | Family Echo dumps after 7 days
@@ -23,7 +24,7 @@ year          | string    | not null
 name          | string    |
 
 
-## Devices
+## Devices -- implement later
 
 column name    | data type | details
 ---------------|-----------|-----------------------
