@@ -8,10 +8,11 @@ class CreateFamilyMembers < ActiveRecord::Migration
 
       t.timestamps
     end
-    
+
     add_index :family_members, :user_id
 
-    add_column :users, :family_member_id, :integer, null: false
-    add_index :users, :family_member_id
+    add_column :users, :family_member_id, :integer
+    add_column :users, :fname, :string, default: "Joe"
+    add_column :users, :lname, :string, default: "Schmoe"
   end
 end

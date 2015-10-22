@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   after_initialize :ensure_session_token
+  after_create :create_family_member_entry
+
+  has_many :family_members, dependent: :destroy
 
   def self.find_by_credentials(username, password)
     @user = User.find_by(username: username)
@@ -15,6 +18,13 @@ class User < ActiveRecord::Base
 
   def name
     "#{self.fname} #{self.lname}"
+  end
+
+  def create_family_member_entry
+    self.family_members.create!({
+      fname: self.fname,
+      lname: self.lname
+    })
   end
 
   def password=(password)

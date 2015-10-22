@@ -28,15 +28,16 @@ ActiveRecord::Schema.define(version: 20151022212456) do
   add_index "family_members", ["user_id"], name: "index_family_members_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",         null: false
-    t.string   "password_digest",  null: false
-    t.string   "session_token",    null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "family_member_id", null: false
+    t.string   "username",                            null: false
+    t.string   "password_digest",                     null: false
+    t.string   "session_token",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "family_member_id"
+    t.string   "fname",            default: "Joe"
+    t.string   "lname",            default: "Schmoe"
   end
 
-  add_index "users", ["family_member_id"], name: "index_users_on_family_member_id", using: :btree
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
