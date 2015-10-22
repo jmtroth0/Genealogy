@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20151022212456) do
   enable_extension "plpgsql"
 
   create_table "family_members", force: :cascade do |t|
-    t.integer  "fname",                        null: false
-    t.integer  "lname",                        null: false
+    t.string   "fname",                        null: false
+    t.string   "lname",                        null: false
     t.string   "gender",     default: "other", null: false
     t.integer  "user_id",                      null: false
     t.datetime "created_at"

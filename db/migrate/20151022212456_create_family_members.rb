@@ -1,8 +1,8 @@
 class CreateFamilyMembers < ActiveRecord::Migration
   def change
     create_table :family_members do |t|
-      t.integer :fname, null: false
-      t.integer :lname, null: false
+      t.string :fname, null: false
+      t.string :lname, null: false
       t.string :gender, null: false, default: "other"
       t.integer :user_id, null: false
 
