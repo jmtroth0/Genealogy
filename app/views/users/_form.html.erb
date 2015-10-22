@@ -1,29 +1,26 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="field">
-    <%= f.label :session_token %><br>
-    <%= f.text_field :session_token %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if status == :new %>
+  <% action = users_url %>
+  <% button_text = "Sign Up" %>
+<% elsif status == :session %>
+  <% action = session_url %>
+  <% button_text = "Sign In" %>
 <% end %>
+
+<form action="<%= action %>" method="POST">
+  <%= form_auth_token %>
+
+  <label for="username">Username</label>
+  <input
+    id="username"
+    type="text"
+    name="user[username]"
+    value="<%= @user.username %>">
+
+  <label for="password">Password</label>
+  <input
+    id="password"
+    type="password"
+    name="user[password]">
+
+  <button><%= button_text %></button>
+</form>

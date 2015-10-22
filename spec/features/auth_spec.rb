@@ -12,6 +12,7 @@ feature "the signup process" do
     before(:each) { visit new_user_url }
 
     it "validates username presence" do
+
       click_button 'Sign Up'
       expect(page).to have_content "Username can't be blank"
     end
@@ -56,7 +57,7 @@ feature "logging out" do
 
   it "begins with logged out state" do
     visit new_user_url
-    expect(page).to have_content 'Sign In'
+    expect(page).to have_content 'Sign Up'
   end
 
   it "doesn't show username on the homepage after logout" do
