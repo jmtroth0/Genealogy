@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     @user && @user.is_password?(password) ? @user : nil
   end
 
+  def name
+    "#{self.fname} #{self.lname}"
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);
