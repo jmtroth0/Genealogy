@@ -1,7 +1,6 @@
 Genealogy.Routers.Router = Backbone.Router.extend({
   initialize: function ($rootEl) {
     this.$rootEl = $rootEl;
-    Backbone.history.navigate("main", {trigger: true});
   },
 
   routes: {
@@ -9,7 +8,7 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     "main": "userMain",
   },
 
-  mainUser: function() {
+  userMain: function() {
     var user = Genealogy.currentUser = new Genealogy.Models.CurrentUser();
     user.fetch();
     var view = new Genealogy.Views.UserMain({user: user});
