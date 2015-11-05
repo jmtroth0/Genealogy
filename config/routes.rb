@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create, :edit, :show, :index]
+  resources :users, only: [:new, :create, :edit]
   resource :session, only: [:new, :create, :destroy]
 
-  resources :family_members
+  namespace :api do
+    resources :users, only: [:show, :index]
+    resources :family_members
+  end
 end

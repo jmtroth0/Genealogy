@@ -1,12 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    @users = User.all
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-
   def new
     @user = User.new
   end
@@ -19,9 +11,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notices] = ["Welcome!"]
+      flash.now[:notices] = ["Welcome!"]
       sign_in @user
-      redirect_to @user
+      redirect_to api_user_url @user
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
