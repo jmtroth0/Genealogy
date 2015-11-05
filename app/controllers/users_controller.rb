@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       flash.now[:notices] = ["Welcome!"]
       sign_in @user
-      redirect_to api_user_url @user
+      redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new

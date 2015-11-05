@@ -4,7 +4,7 @@ window.Genealogy = {
   Views: {},
   Routers: {},
   initialize: function() {
-    this.router = new Genealogy.Routers.Router({ $rootEl: $('div#main') });
+    this.router = new Genealogy.Routers.Router($('div#main'));
     Backbone.history.start();
   }
 };

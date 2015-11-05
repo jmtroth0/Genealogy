@@ -9,6 +9,7 @@
 <form action="<%= action %>" method="POST">
   <%= form_auth_token %>
 
+<% if status == :new %>
   <label for="fname">First Name</label>
   <input
     id="fname"
@@ -22,7 +23,7 @@
     type="text"
     name="user[lname]"
     value="<%= @user.lname %>">
-
+<% end %>
   <label for="username">Username</label>
   <input
     id="username"
