@@ -1,4 +1,7 @@
 <div id="backdrop">
+  <%= flash[:errors].join(", ") if flash[:errors] %>
+  <%= flash[:notices].join(", ") if flash[:notices] %>
+  <%= button_to "Sign Out", session_url, method: :delete %>
   <div id="main">
   </div>
 </div>
