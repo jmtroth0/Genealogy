@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     personal = self.family_members.create!(fname: self.fname, lname: self.lname)
   end
 
+# password
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);
@@ -33,6 +34,7 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(password_digest).is_password?(password)
   end
 
+# session token
   def reset_session_token!
     self.session_token = generate_session_token
     self.save!
