@@ -6,7 +6,6 @@ module Api
 
     def show
       @family_member = FamilyMember.find(params[:id])
-      render :show
     end
 
     def new
