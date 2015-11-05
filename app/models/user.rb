@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   validates :username, :session_token, :password_digest, presence: true
-  validates :username, :session_token, uniqueness: true
+  validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
   attr_reader :password
@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
 
   def create_family_member_entry
     personal = self.family_members.create!(fname: self.fname, lname: self.lname)
-    self.family_member_id = personal.id
   end
 
   def password=(password)

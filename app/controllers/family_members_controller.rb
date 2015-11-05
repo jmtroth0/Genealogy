@@ -8,7 +8,7 @@ class FamilyMembersController < ApplicationController
     if @family_member.user_id == current_user.user_id
       render :show
     else
-      flash.now[:errors] = ["Can't view unless they are your family member"]
+      flash[:errors] = ["Can't view unless they are your family member"]
       redirect_to new_user_url
     end
   end
