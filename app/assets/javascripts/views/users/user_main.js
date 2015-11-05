@@ -8,7 +8,6 @@ Genealogy.Views.UserMain = Backbone.View.extend({
   },
 
   render: function () {
-    debugger
     this.$el.html(this.template({user: this.user}));
     return this;
   }
