@@ -22,13 +22,6 @@ feature "the signup process" do
       click_button 'Sign Up'
       expect(page).to have_content 'Password is too short (minimum is 6 characters)'
     end
-
-    it "shows username on the homepage after signup" do
-      fill_in 'Username', with: 'testing_username'
-      fill_in 'Password', with: 'biscuits'
-      click_button 'Sign Up'
-      expect(page).to have_content 'testing_username'
-    end
   end
 end
 
@@ -44,11 +37,6 @@ feature "logging in" do
     fill_in 'Password', with: 'wrong_password'
     click_button 'Sign In'
     expect(page).to have_content 'Invalid Username and/or Password'
-  end
-
-  it "shows username on the homepage after login" do
-    sign_in_as_testing_username
-    expect(page).to have_content 'testing_username'
   end
 
 end

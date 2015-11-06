@@ -10,6 +10,7 @@ module Api
 
     def current
       @user = User.includes(:family_members).find_by(session_token: session[:token])
+      @family = @user.family_members
       render :show
     end
   end
