@@ -1,1 +1,1 @@
-json.extract! family_member, :name, :lname, :fname
+json.extract! family_member, :id, :name, :lname, :fname

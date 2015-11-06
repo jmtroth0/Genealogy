@@ -38,6 +38,12 @@ module Api
       end
     end
 
+    def destroy
+      @family_member = FamilyMember.find(params[:id])
+      @family_member.destroy!
+      render :show
+    end
+
     private
 
     def family_member_params

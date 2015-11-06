@@ -4,13 +4,15 @@
   <input
     id="name"
     type="text"
-    name="family_member[fname]">
+    name="family_member[fname]"
+    value="<%= familyMember && familyMember.escape('fname') %>">
 
   <label for="lname">Last Name</label>
   <input
     id="name"
     type="text"
-    name="family_member[lname]">
+    name="family_member[lname]"
+    value="<%= familyMember && familyMember.escape('lname') %>">
 
-  <button>Add to Family</button>
+  <button><%= familyMember.isNew() ? "Add to Family" : "Submit Edit" %></button>
 </form>

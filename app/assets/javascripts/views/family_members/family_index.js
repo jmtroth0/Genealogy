@@ -12,28 +12,39 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
     this.user = options.user;
     this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.user.family(), 'add', this.addFamilyMember);
+    this.listenTo(this.user.family(), 'remove', this.removeFamilyMember);
   },
 
   render: function () {
     this.$el.html(this.template());
-    this.user.family().forEach(function (familyMember) {
-      this.addFamilyMember(familyMember);
-    }.bind(this));
+    this.placeFamilyMembers();
     return this;
   },
 
-  addFamilyMember: function (familyMember) {
-    var familyMemberView = new Genealogy.Views.FamilyIndexItem(familyMember);
-    this.$el.find('ul.family-members').append(familyMemberView.render().$el);
+  placeFamilyMembers: function () {
+    this.user.family().forEach(function (familyMember) {
+      this.addFamilyMember(familyMember);
+    }.bind(this));
   },
 
-  removeFamilyMember: function (e) {
+  addFamilyMember: function (familyMember) {
+    var familyMemberView = new Genealogy.Views.FamilyIndexItem({
+      model: familyMember
+    });
+    this.addSubview('ul.family-members', familyMemberView);
+  },
 
+  removeFamilyMember: function (familyMember, family) {
+    this.removeModelSubview('ul.family-members', familyMember);
   },
 
   openForm: function () {
-    var $template = this.makeModal({content: this.formTemplate()});
-    this.$el.find('section.form-modal').remove();
+    if (this.$el.find('section.form-modal').length !== 0) { return; }
+    var $template = this.makeModal({
+      content: this.formTemplate({
+        familyMember: new Genealogy.Models.FamilyMember()
+      })
+    });
     this.$el.append($template);
   },
 
