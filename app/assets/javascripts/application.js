@@ -12,12 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require genealogy
+//= require_tree ./utils
 //= require_tree ../templates
-//= retuire_tree ./utils
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

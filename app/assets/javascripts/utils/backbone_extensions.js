@@ -5,16 +5,22 @@ Backbone.Collection.prototype.getOrFetch = function (id) {
   if (model){
     model.fetch();
   } else {
-    model = new this.model ({id: id})
-    collection.add(model)
+    model = new this.model ({id: id});
+    collection.add(model);
     model.fetch({
       error: collection.remove
-    })
+    });
   }
   return model;
 };
 
-Backbone.View.prototype.addUserCover = function () {
-  var coverView = new Sparklr.Views.UserCover({user: this.user})
-  coverView.addUserCover($('#main'));
+Backbone.View.prototype.makeModal = function (options) {
+  var modal = JST['shared/modal']({content: options.content});
+  this.$el.on('click', 'button.close-form', this.removeModal.bind(this));
+  return modal;
+};
+
+Backbone.View.prototype.removeModal = function () {
+  this.$el.off('click', 'button.close-form');
+  $('section.form-modal').remove();
 };

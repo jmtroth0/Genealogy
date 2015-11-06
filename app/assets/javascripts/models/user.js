@@ -13,6 +13,10 @@ Genealogy.Models.User = Backbone.Model.extend({
     this._family = this._family || new Genealogy.Collections.FamilyMembers([]);
 
     return this._family;
+  },
+
+  name: function () {
+    return this.fname + " " + this.lname;
   }
 });
 
