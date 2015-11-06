@@ -10,7 +10,6 @@ fname             | string    |
 lname             | string    |
 password_digest   | string    | not null
 session_token     | string    | not null
-family_member_id  | integer   | foreign key (references family_member)
 family_tree       | string    | will be a url referencing Family Echo
 tree_expiration   | date      | Family Echo dumps after 7 days
 class_id          | integer   | not null, foreign key, (references classes)
@@ -42,7 +41,6 @@ fname          | string    | not null
 lname          | string    | not null
 mother_id      | integer   | foreign key, (self referencing)
 father_id      | integer   | foreign key, (self referencing)
-partner_id     | integer   | foreign key, (self referencing)
 birth_date     | date      |
 death_date     | date      |
 maiden name    | string    |
