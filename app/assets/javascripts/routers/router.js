@@ -4,14 +4,22 @@ Genealogy.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "userMain",
-    "main": "userMain",
+    "": "main",
+    "main": "main",
+    "family": "showFamily",
   },
 
-  userMain: function() {
-    var user = Genealogy.currentUser = new Genealogy.Models.CurrentUser();
+  main: function() {
+    var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
     user.fetch();
     var view = new Genealogy.Views.UserMain({user: user});
+    this._swapView(view);
+  },
+
+  showFamily: function () {
+    var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
+    user.fetch();
+    var view = new Genealogy.Views.FamilyIndex({user: user});
     this._swapView(view);
   },
 
