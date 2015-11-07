@@ -5,7 +5,8 @@ module Api
     end
 
     def show
-      @user = User.find(params[:id])
+      @user = User.includes(:family_members).find(params[:id])
+      @family = @user.family_members
     end
 
     def current
