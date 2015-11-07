@@ -11,17 +11,19 @@ user = User.create!({
   fname: 'Charlemagne', lname: 'I'
 })
 charlemagne = user.family_members.first
-pepin = user.family_members.create!({fname: 'Pepin', lname: 'the Short'})
-bertrada = user.family_members.create!({fname: 'Bertrada', lname: 'of Laon'})
-charlemagne.parent_a = pepin
-charlemagne.parent_b = bertrada
+pepin = user.family_members.create!({ fname: 'Pepin', lname: 'the Short' })
+bertrada = user.family_members.create!({ fname: 'Bertrada', lname: 'of Laon' })
+charlemagne.parent_a_id = pepin.id
+charlemagne.parent_b_id = bertrada.id
+charlemagne.save!
 carloman = user.family_members.create!({
   fname: 'Carloman', lname: 'I', parent_a: pepin, parent_b: bertrada
 })
 martel = user.family_members.create!({ fname: 'Charles', lname: 'Martel' })
 rotrude = user.family_members.create!({ fname: 'Rotrude', lname: 'of Trier' })
-pepin.parent_a = martel
-pepin.parent_b = rotrude
+pepin.parent_a_id = martel.id
+pepin.parent_b_id = rotrude.id
+pepin.save!
 hildegard = user.family_members.create!({ fname: 'Hildegard', lname: 'the Great' })
 hunch = user.family_members.create!({
   fname: 'Pepin', lname: 'the Hunchback', parent_a: charlemagne, parent_b: hildegard
