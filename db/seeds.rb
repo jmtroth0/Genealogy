@@ -6,27 +6,32 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create!({username: 'mbars', password: 'password', fname: 'Oranos', lname: 'Marx'})
-oranos = user.family_members.first
-gaia = user.family_members.create!({fname: 'Gaia', lname: 'Hayek'})
-rhea = user.family_members.create!({
-  fname: 'Rhea', lname: 'Hayek', parent_a: oranos, parent_b: gaia
+user = User.create!({
+  username: 'charlemagne', password: 'holy rome',
+  fname: 'Charlemagne', lname: 'I'
 })
-kronos = user.family_members.create!({
-  fname: 'Kronos', lname: 'Marx', parent_a: oranos, parent_b: gaia
+charlemagne = user.family_members.first
+pepin = user.family_members.create!({fname: 'Pepin', lname: 'the Short'})
+bertrada = user.family_members.create!({fname: 'Bertrada', lname: 'of Laon'})
+charlemagne.parent_a = pepin
+charlemagne.parent_b = bertrada
+carloman = user.family_members.create!({
+  fname: 'Carloman', lname: 'I', parent_a: pepin, parent_b: bertrada
 })
-hyperion = user.family_members.create!({
-  fname: 'Hyperion', lname: 'Marx', parent_a: oranos, parent_b: gaia
+martel = user.family_members.create!({ fname: 'Charles', lname: 'Martel' })
+rotrude = user.family_members.create!({ fname: 'Rotrude', lname: 'of Trier' })
+pepin.parent_a = martel
+pepin.parent_b = rotrude
+hildegard = user.family_members.create!({ fname: 'Hildegard', lname: 'the Great' })
+hunch = user.family_members.create!({
+  fname: 'Pepin', lname: 'the Hunchback', parent_a: charlemagne, parent_b: hildegard
 })
-zeus = user.family_members.create!({
-  fname: 'Zeus', lname: 'Marx', parent_a: kronos, parent_b: rhea
+junior = user.family_members.create!({
+  fname: 'Charles', lname: 'the Younger', parent_a: charlemagne, parent_b: hildegard
 })
-hera = user.family_members.create!({
-  fname: 'Hera', lname: 'Hayek', parent_a: kronos, parent_b: rhea
+louis = user.family_members.create!({
+  fname: 'Louis', lname: 'the Pious', parent_a: charlemagne, parent_b: hildegard
 })
-athena = user.family_members.create!({
-  fname: 'Athena', lname: 'Hayek', parent_a: zeus
-})
-ares = user.family_members.create!({
-  fname: 'Ares', lname: 'Marx', parent_a: zeus, parent_b: hera
+lothair = user.family_members.create!({
+  fname: 'Lothair', lname: 'I', parent_a: louis
 })
