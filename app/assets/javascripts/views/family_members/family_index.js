@@ -6,6 +6,7 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
   events: {
     "click button#add-family-member": "openForm",
     "submit form.family-member-form": "submitForm",
+    "click button#make-family-tree": "makeFamilyTree",
   },
 
   initialize: function (options) {
@@ -36,6 +37,10 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
 
   removeFamilyMember: function (familyMember, family) {
     this.removeModelSubview('ul.family-members', familyMember);
+  },
+
+  makeFamilyTree: function () {
+    console.log("Not yet implemented");
   },
 
   openForm: function () {
