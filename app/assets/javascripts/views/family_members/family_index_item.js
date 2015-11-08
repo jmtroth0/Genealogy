@@ -1,4 +1,4 @@
-Genealogy.Views.FamilyIndexItem = Backbone.View.extend({
+Genealogy.Views.FamilyIndexItem = Backbone.CompositeView.extend({
 
   template: JST['family_members/index_item'],
   tagName: 'li',
@@ -7,7 +7,6 @@ Genealogy.Views.FamilyIndexItem = Backbone.View.extend({
   events: {
     "click button.delete": "deleteFamilyMember",
     "click button.edit": "editFamilyMember",
-    "submit form.family-member-form": "submitForm",
   },
 
   initialize: function (options) {
@@ -27,33 +26,15 @@ Genealogy.Views.FamilyIndexItem = Backbone.View.extend({
 
   editFamilyMember: function (e) {
     if (this.$el.find('section.form-modal').length !== 0) { return; }
-    var $template = this.makeModal({
-      content: JST['family_members/form']({
-        familyMember: this.familyMember
-      })
+    this.editModal = new Genealogy.Views.PersonFormView({
+      familyMember: this.familyMember,
+      closeCallback: this.closeForm.bind(this)
     });
-    this.$el.append($template);
+    this.addSubview('div.placeholder', this.editModal);
   },
 
-  submitForm: function (e) {
-    e.preventDefault();
-    if (this.formPending) { return; }
-
-    var attrs = $(e.target).serializeJSON().family_member;
-
-    var $button = $(e.target).find('button');
-    $button.html('Pending');
-    this.formPending = true;
-
-    this.familyMember.save(attrs, {
-      success: function () {
-        this.removeModal();
-        this.formPending = false;
-      }.bind(this),
-      error: function (model, response) {
-        $button.html('Submit Edit');
-        this.formPending = false;
-      }.bind(this)
-    });
+  closeForm: function (e) {
+    this.removeSubview('div.placeholder', this.editModal);
   },
+
 });

@@ -14,5 +14,15 @@
     name="family_member[lname]"
     value="<%= familyMember && familyMember.escape('lname') %>">
 
+  <label>ParentA
+    <select class="select-parent parentA" name="family_member[parentA]">
+      <option></option>
+    </select>
+  </label>
+  <label>ParentB
+    <select class="select-parent parentB" name="family_member[parentB]">
+      <option></option>
+    </select>
+  </label>
   <button><%= familyMember.isNew() ? "Add to Family" : "Submit Edit" %></button>
 </form>

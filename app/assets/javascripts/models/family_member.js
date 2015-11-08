@@ -6,19 +6,19 @@ Genealogy.Models.FamilyMember = Backbone.Model.extend({
       (this.escape('fname') + " " + this.escape('lname'));
   },
 
+  parents: function () {
+    var parents = [];
+    if (this.get('parent_a_id')) parents.push(this.parentA());
+    if (this.get('parent_b_id')) parents.push(this.parentB());
+    return parents;
+  },
+
   parentA: function () {
     return this.collection.getOrFetch(this.get('parent_a_id'));
   },
 
   parentB: function () {
     return this.collection.getOrFetch(this.get('parent_b_id'));
-  },
-
-  parents: function () {
-    var parents = [];
-    if (this.get('parent_a_id')) parents.push(this.parentA());
-    if (this.get('parent_b_id')) parents.push(this.parentB());
-    return parents;
   },
 
   children: function () {
@@ -31,17 +31,18 @@ Genealogy.Models.FamilyMember = Backbone.Model.extend({
   getSortedFamily: function () {
     var descendants = this.getDescendants();
     var ancestors = this.getAncestors();
-    return ancestors.concat(descendants.reverse());
+    return ancestors.reverse().concat(descendants);
   },
 
   getDescendants: function (descendants, genDisplacement) {
-    return this.getGroup(this.children);
+    return this.getFamilySet(this.children);
   },
 
   getAncestors: function (ancestors, genDisplacement) {
-    return this.getGroup(this.parents);
+    return this.getFamilySet(this.parents);
   },
 
+  // once implemented at the model level, add partners also
   getFamilySet: function (callback, familySet, genDisplacement){
     var subFamilySet = callback.call(this);
     familySet = familySet || [];

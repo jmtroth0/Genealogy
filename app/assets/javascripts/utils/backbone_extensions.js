@@ -16,11 +16,5 @@ Backbone.Collection.prototype.getOrFetch = function (id) {
 
 Backbone.View.prototype.makeModal = function (options) {
   var modal = JST['shared/modal']({content: options.content});
-  this.$el.on('click', 'button.close-form', this.removeModal.bind(this));
-  return modal;
-};
-
-Backbone.View.prototype.removeModal = function () {
-  this.$el.off('click', 'button.close-form');
-  $('section.form-modal').remove();
+  return $(modal);
 };

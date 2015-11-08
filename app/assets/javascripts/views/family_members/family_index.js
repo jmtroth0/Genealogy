@@ -2,6 +2,7 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
 
   template: JST['family_members/index'],
   formTemplate: JST['family_members/form'],
+  className: 'family-main-index',
 
   events: {
     "click button#add-family-member": "openForm",
@@ -11,9 +12,10 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.user = options.user;
+    this.family = this.user.family();
     this.listenTo(this.user, 'sync', this.render);
-    this.listenTo(this.user.family(), 'add', this.addFamilyMember);
-    this.listenTo(this.user.family(), 'remove', this.removeFamilyMember);
+    this.listenTo(this.family, 'add', this.addFamilyMember);
+    this.listenTo(this.family, 'remove', this.removeFamilyMember);
   },
 
   render: function () {
@@ -23,7 +25,7 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
   },
 
   placeFamilyMembers: function () {
-    this.user.family().forEach(function (familyMember) {
+    this.family.forEach(function (familyMember) {
       this.addFamilyMember(familyMember);
     }.bind(this));
   },
@@ -45,40 +47,11 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
 
   openForm: function () {
     if (this.$el.find('section.form-modal').length !== 0) { return; }
-    var $template = this.makeModal({
-      content: this.formTemplate({
-        familyMember: new Genealogy.Models.FamilyMember()
-      })
+    var formView = new Genealogy.Views.PersonFormView({
+      familyMember: new Genealogy.Models.FamilyMember(),
+      family: this.family
     });
-    this.$el.append($template);
-  },
-
-  submitForm: function (e) {
-    e.preventDefault();
-    if (this.formPending) { return; }
-
-    var attrs = $(e.target).serializeJSON().family_member;
-    var person = new Genealogy.Models.FamilyMember(attrs);
-
-    var family = this.user.family();
-    family.add(person);
-
-    var $button = $(e.target).find('button');
-    $button.html('Pending');
-    this.formPending = true;
-
-    person.save({}, {
-      success: function () {
-        $button.html('Add to Family');
-        this.$el.find('input[type=text]').val("");
-        this.formPending = false;
-      }.bind(this),
-      error: function (model, response) {
-        $button.html('Add to Family');
-        family.remove(model);
-        this.formPending = false;
-      }.bind(this)
-    });
+    this.addSubview('div.placeholder', formView);
   },
 
 
