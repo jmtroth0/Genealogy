@@ -8,10 +8,6 @@ module Api
       @family_member = FamilyMember.find(params[:id])
     end
 
-    def new
-      @family_member = FamilyMember.new
-    end
-
     def create
       @family_member = current_user.family_members.new(family_member_params)
 
@@ -21,10 +17,6 @@ module Api
         flash.now[:errors] = @family_member.errors.full_messages
         render :new
       end
-    end
-
-    def edit
-      @family_member = FamilyMember.find(params[:id])
     end
 
     def update

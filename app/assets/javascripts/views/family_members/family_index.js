@@ -53,6 +53,4 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
     });
     this.addSubview('div.placeholder', formView);
   },
-
-
 });

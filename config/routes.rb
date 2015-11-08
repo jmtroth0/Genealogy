@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json} do
     resources :users, only: [:show, :index]
     get 'current_user', to: 'users#current'
-    resources :family_members
+    resources :family_members, except: [:new, :edit]
+    resources :photos, except: [:new, :edit]
   end
 end
