@@ -13,7 +13,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'backbone-on-rails'
 gem 'paperclip'
 gem 'figaro'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -30,6 +30,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem "fakeweb", "~> 1.3"
 end
 
 group :development do
