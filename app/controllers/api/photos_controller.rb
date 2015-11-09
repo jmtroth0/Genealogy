@@ -1,6 +1,7 @@
 module Api
   class PhotosController < ApiController
     wrap_parameters false
+    
     def create
       @photo = current_user.photos.new(photo_params)
 

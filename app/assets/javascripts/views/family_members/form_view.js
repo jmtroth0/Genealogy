@@ -1,5 +1,5 @@
 Genealogy.Views.PersonFormView = Backbone.View.extend({
-  formTemplate: JST['family_members/form'],
+  template: JST['family_members/form'],
 
   events: {
     'click button.close-form': 'closeForm',
@@ -19,7 +19,7 @@ Genealogy.Views.PersonFormView = Backbone.View.extend({
 
   openForm: function () {
     var $template = this.makeModal({
-      content: this.formTemplate({
+      content: this.template({
         familyMember: this.familyMember
       })
     });

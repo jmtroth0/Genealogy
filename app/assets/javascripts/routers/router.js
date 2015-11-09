@@ -7,6 +7,7 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     "": "main",
     "main": "main",
     "family": "showFamily",
+    "photos": "showPhotos",
   },
 
   main: function() {
@@ -19,7 +20,16 @@ Genealogy.Routers.Router = Backbone.Router.extend({
   showFamily: function () {
     var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
     user.fetch();
-    var view = new Genealogy.Views.FamilyIndex({user: user});
+    var view = new Genealogy.Views.FamilyIndex({ user: user });
+    this._swapView(view);
+  },
+
+  showPhotos: function () {
+    var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
+    var photos = new Genealogy.Collections.Photos();
+    user.fetch();
+    photos.fetch();
+    var view = new Genealogy.Views.PhotosIndex({ collection: photos });
     this._swapView(view);
   },
 

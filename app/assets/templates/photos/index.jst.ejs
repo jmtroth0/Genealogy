@@ -1,0 +1,7 @@
+<ul class='Photos'>
+  <% photos.forEach(function(photo){ %>
+    <li class='photo'><img src="<%= photo.get('image_url') %>"></li>
+  <% }) %>
+</ul>
+
+<button class="upload-photo">Upload?</button>

@@ -1,0 +1,18 @@
+<h1><%= photo.id ? "Edit Photo" : "Create Photo" %></h1>
+
+<p class='errors'></p>
+
+<form>
+  <label for="title">Title</label>
+  <input
+    id="title"
+    type="text"
+    name="title"
+    value="<%= photo.escape("title") %>">
+
+  <label for="input-photo-image">Image</label>
+  <input id="input-photo-image" type="file" name="photo[image]">
+  <img src="" id="preview-post-image" width="100">
+  
+  <button class="submit">Upload</button>
+</form>
