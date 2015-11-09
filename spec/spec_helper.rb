@@ -116,3 +116,7 @@ end
 def sign_in_as_testing_username
   sign_in("testing_username")
 end
+
+def sample_photo (filename = "photos/kitty.jpg")
+  fixture_file_upload(filename, "image/jpg")
+end
