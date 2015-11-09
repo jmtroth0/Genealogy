@@ -10,7 +10,7 @@ Genealogy.Views.PhotosIndex = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'add sync', this.render);
   },
 
   render: function () {
@@ -20,7 +20,7 @@ Genealogy.Views.PhotosIndex = Backbone.View.extend({
 
   openForm: function () {
     if (this.$el.find('section.form-modal').length !== 0) { return; }
-    this.formPhoto = new Genealogy.Models.Photo()
+    this.formPhoto = new Genealogy.Models.Photo();
     var $template = this.makeModal({
       content: this.formTemplate({
         photo: this.formPhoto
@@ -48,10 +48,12 @@ Genealogy.Views.PhotosIndex = Backbone.View.extend({
     formData.append("photo[image]", file);
 
     this.formPhoto.saveFormData(formData, {
-      success: function () {
-        this.collection.add(this.photo);
+      success: function (model) {
+        this.collection.add(model);
+        this.closeForm();
       }.bind(this),
       error: function (model, response) {
+        this.collection.remove(model);
         $('.form-errors').empty();
         response.responseJSON.forEach(function (el) {
           var $li = $('<li>');

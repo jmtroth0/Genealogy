@@ -16,7 +16,7 @@ Genealogy.Models.Photo = Backbone.Model.extend({
       processData: false,
       contentType: false,
       success: function(resp) {
-        model.set(models.parse(resp));
+        model.set(model.parse(resp));
         options.success && options.success(model, resp, options);
       },
       error: function(resp) {
