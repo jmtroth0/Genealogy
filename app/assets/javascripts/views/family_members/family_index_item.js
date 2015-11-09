@@ -1,4 +1,5 @@
-Genealogy.Views.FamilyIndexItem = Backbone.CompositeView.extend({
+Genealogy.Views.FamilyIndexItem = Backbone.CompositeView.extend(
+  _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['family_members/index_item'],
   tagName: 'li',
@@ -6,35 +7,24 @@ Genealogy.Views.FamilyIndexItem = Backbone.CompositeView.extend({
 
   events: {
     "click button.delete": "deleteFamilyMember",
-    "click button.edit": "editFamilyMember",
+    "click button.edit": "openForm",
   },
 
   initialize: function (options) {
-    this.familyMember = options.model;
-    this.listenTo(this.familyMember, 'sync', this.render);
+    this.model = options.model;
+
+    this.formViewType = Genealogy.Views.PersonFormView;
+
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {
-    this.$el.html(this.template({ person: this.familyMember }));
+    this.$el.html(this.template({ person: this.model }));
     return this;
   },
 
   deleteFamilyMember: function (e) {
-    this.familyMember.destroy();
+    this.model.destroy();
     this.$el.remove(); // add a warning modal once there is more info to them
   },
-
-  editFamilyMember: function (e) {
-    if (this.$el.find('section.form-modal').length !== 0) { return; }
-    this.editModal = new Genealogy.Views.PersonFormView({
-      familyMember: this.familyMember,
-      closeCallback: this.closeForm.bind(this)
-    });
-    this.addSubview('div.placeholder', this.editModal);
-  },
-
-  closeForm: function (e) {
-    this.removeSubview('div.placeholder', this.editModal);
-  },
-
-});
+}));

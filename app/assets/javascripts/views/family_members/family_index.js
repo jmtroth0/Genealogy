@@ -1,21 +1,22 @@
-Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
+Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend(
+  _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['family_members/index'],
-  formTemplate: JST['family_members/form'],
   className: 'family-main-index',
 
   events: {
     "click button#add-family-member": "openForm",
-    "submit form.family-member-form": "submitForm",
     "click button#make-family-tree": "makeFamilyTree",
   },
 
   initialize: function (options) {
-    this.user = options.user;
-    this.family = this.user.family();
-    this.listenTo(this.user, 'sync', this.render);
-    this.listenTo(this.family, 'add', this.addFamilyMember);
-    this.listenTo(this.family, 'remove', this.removeFamilyMember);
+    this.collection = this.model.family();
+
+    this.formViewType = Genealogy.Views.PersonFormView;
+
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.collection, 'add', this.addFamilyMember);
+    this.listenTo(this.collection, 'remove', this.removeFamilyMember);
   },
 
   render: function () {
@@ -25,7 +26,7 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
   },
 
   placeFamilyMembers: function () {
-    this.family.forEach(function (familyMember) {
+    this.collection.forEach(function (familyMember) {
       this.addFamilyMember(familyMember);
     }.bind(this));
   },
@@ -45,12 +46,19 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend({
     console.log("Not yet implemented");
   },
 
-  openForm: function () {
-    if (this.$el.find('section.form-modal').length !== 0) { return; }
-    var formView = new Genealogy.Views.PersonFormView({
-      familyMember: new Genealogy.Models.FamilyMember(),
-      family: this.family
-    });
-    this.addSubview('div.placeholder', formView);
-  },
-});
+  // openForm: function () {
+  //   if (this.$el.find('section.form-modal').length !== 0) { return; }
+  //   this.formView = new Genealogy.Views.PersonFormView({
+  //     familyMember: new Genealogy.Models.FamilyMember(),
+  //     family: this.collection,
+  //     closeCallback: this.closeForm.bind(this)
+  //   });
+  //   this.$el.append("<div class='form-space'>");
+  //   this.addSubview('div.form-space', this.formView);
+  // },
+  //
+  // closeForm: function () {
+  //   this.removeSubview('div.form-space', this.formView);
+  //   this.$el.find('div.form-space').remove();
+  // }
+}));

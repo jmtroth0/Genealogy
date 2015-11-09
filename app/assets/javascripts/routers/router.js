@@ -13,14 +13,14 @@ Genealogy.Routers.Router = Backbone.Router.extend({
   main: function() {
     var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
     user.fetch();
-    var view = new Genealogy.Views.UserMain({user: user});
+    var view = new Genealogy.Views.UserMain({model: user});
     this._swapView(view);
   },
 
   showFamily: function () {
     var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
     user.fetch();
-    var view = new Genealogy.Views.FamilyIndex({ user: user });
+    var view = new Genealogy.Views.FamilyIndex({ model: user });
     this._swapView(view);
   },
 

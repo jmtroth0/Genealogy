@@ -5,14 +5,14 @@
     id="name"
     type="text"
     name="family_member[fname]"
-    value="<%= familyMember && familyMember.escape('fname') %>">
+    value="<%= model && model.escape('fname') %>">
 
   <label for="lname">Last Name</label>
   <input
     id="name"
     type="text"
     name="family_member[lname]"
-    value="<%= familyMember && familyMember.escape('lname') %>">
+    value="<%= model && model.escape('lname') %>">
 
   <label>ParentA
     <select class="select-parent parentA" name="family_member[parentA]">
@@ -24,5 +24,5 @@
       <option></option>
     </select>
   </label>
-  <button><%= familyMember.isNew() ? "Add to Family" : "Submit Edit" %></button>
+  <button><%= model.isNew() ? "Add to Family" : "Submit Edit" %></button>
 </form>
