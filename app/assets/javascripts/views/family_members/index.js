@@ -10,11 +10,12 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend(
   },
 
   initialize: function (options) {
-    this.collection = this.model.family();
+    this.user = options.user;
+    this.collection = this.user.family();
 
     this.formViewType = Genealogy.Views.PersonFormView;
 
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.user, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addFamilyMember);
     this.listenTo(this.collection, 'remove', this.removeFamilyMember);
   },
@@ -45,20 +46,4 @@ Genealogy.Views.FamilyIndex = Backbone.CompositeView.extend(
   makeFamilyTree: function () {
     console.log("Not yet implemented");
   },
-
-  // openForm: function () {
-  //   if (this.$el.find('section.form-modal').length !== 0) { return; }
-  //   this.formView = new Genealogy.Views.PersonFormView({
-  //     familyMember: new Genealogy.Models.FamilyMember(),
-  //     family: this.collection,
-  //     closeCallback: this.closeForm.bind(this)
-  //   });
-  //   this.$el.append("<div class='form-space'>");
-  //   this.addSubview('div.form-space', this.formView);
-  // },
-  //
-  // closeForm: function () {
-  //   this.removeSubview('div.form-space', this.formView);
-  //   this.$el.find('div.form-space').remove();
-  // }
 }));

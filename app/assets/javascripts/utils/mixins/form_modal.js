@@ -22,7 +22,6 @@ Genealogy.Mixins.FormModal = {
 };
 
 Genealogy.Mixins.FormView = {
-
   initializeForm: function (options){
     this.closeForm = options.closeCallback;
     this.addEvents({
@@ -43,9 +42,5 @@ Genealogy.Mixins.FormView = {
   makeModal: function (options) {
     var modal = JST['shared/modal']({content: options.content});
     return $(modal);
-  },
-
-  addEvents: function(events) {
-    this.delegateEvents( _.extend(this.events, events) );
   },
 };

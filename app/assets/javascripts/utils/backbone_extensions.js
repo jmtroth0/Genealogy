@@ -32,3 +32,8 @@ Backbone.Collection.prototype.getOrFetch = function (id) {
   }
   return model;
 };
+
+Backbone.View.prototype.addEvents = function(events) {
+  this.events = this.events || {};
+  this.delegateEvents( _.extend(this.events, events) );
+};
