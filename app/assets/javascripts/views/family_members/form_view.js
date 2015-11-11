@@ -48,7 +48,7 @@ Genealogy.Views.PersonFormView = Backbone.FormView.extend({
         this.formPending = false;
       }.bind(this),
       error: function (model, response) {
-        var buttonText = "";
+        var buttonText;
         if (status === "new") {
           this.collection.remove(model);
           buttonText = 'Add to Family';

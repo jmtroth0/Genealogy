@@ -23,7 +23,7 @@ module Api
       if @document.update(document_params)
         render :show
       else
-        render json: @document.errors.full_messages, status: :unprocessable_entity
+        render json: @document.errors.full_messages.join(', '), status: :unprocessable_entity
       end
     end
 

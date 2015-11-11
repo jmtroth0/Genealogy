@@ -11,7 +11,7 @@ module Api
       if @photo.save
         render :show
       else
-        render json: @photo.errors.full_messages, status: :unprocessable_entity
+        render json: @photo.errors.full_messages.join(', '), status: :unprocessable_entity
       end
     end
 
@@ -24,7 +24,7 @@ module Api
       if @photo.update(photo_params)
         render :show
       else
-        render json: @photo.errors.full_messages, status: :unprocessable_entity
+        render json: @photo.errors.full_messages.join(', '), status: :unprocessable_entity
       end
     end
 

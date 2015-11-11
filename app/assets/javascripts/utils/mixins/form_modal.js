@@ -1,4 +1,3 @@
-
 Genealogy.Mixins.FormModal = {
   openForm: function (options) {
     if (this.$el.find('section.form-modal').length !== 0) { return; }
