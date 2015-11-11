@@ -7,6 +7,6 @@ Genealogy.Views.PhotoIndexItem = Backbone.CompositeView.extend(
 
   initialize: function (options) {
     this.formViewType = Genealogy.Views.PhotoFormView;
-    this.initializeForm();
+    this.initializeItem(options);
   },
 }));

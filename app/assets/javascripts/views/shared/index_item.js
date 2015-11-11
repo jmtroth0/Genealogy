@@ -5,6 +5,7 @@ Genealogy.Mixins.IndexItem = {
       "click button.delete": "deleteModel",
       "click button.edit": "openForm"
     });
+    this.removeCallback = options.remove;
   },
 
   render: function () {
@@ -15,13 +16,13 @@ Genealogy.Mixins.IndexItem = {
   deleteModel: function (e) {
     // add a warning modal once there is more info to them
     if (this.destructionPending) { return; }
-    e.currentTarget.val("Pending");
+    $(e.currentTarget).val("Pending");
     this.destructionPending = true;
 
     this.model.destroy({
       wait: true,
-      success: function () {
-        this.$el.remove();
+      success: function (model) {
+        this.removeCallback(model);
         this.destructionPending = false;
       }.bind(this),
       error: function (model, resp) {

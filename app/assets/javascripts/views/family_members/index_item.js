@@ -7,6 +7,6 @@ Genealogy.Views.FamilyIndexItem = Backbone.CompositeView.extend(
 
   initialize: function (options) {
     this.formViewType = Genealogy.Views.PersonFormView;
-    this.initializeItem();
+    this.initializeItem(options);
   },
 }));

@@ -12,7 +12,7 @@ Backbone.Model.prototype.saveFormData = function (formData, options) {
       options.success && options.success(model, resp, options);
     },
     error: function(resp) {
-      options.error && options.success(model, resp, options);
+      options.error && options.error(model, resp, options);
     },
   });
 };
