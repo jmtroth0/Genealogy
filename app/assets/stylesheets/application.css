@@ -39,6 +39,7 @@ div#backdrop{
  min-height: calc(100% - 41);
  overflow: auto;
  position: relative;
+ padding: 20px;
 }
 
 ul {
