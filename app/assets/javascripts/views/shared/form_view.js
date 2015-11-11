@@ -49,11 +49,6 @@ Backbone.FormView = Backbone.View.extend({
     });
   },
 
-  makeModal: function (options) {
-    var modal = JST['shared/modal']({content: options.content});
-    return $(modal);
-  },
-
   getAttrs: function(e) {
     return $(e.target).serializeJSON();
   },
