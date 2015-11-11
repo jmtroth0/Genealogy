@@ -1,6 +1,7 @@
 Genealogy.Views.UserMain = Backbone.View.extend({
 
   template: JST['users/main'],
+  className: 'main',
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);

@@ -9,7 +9,7 @@ Backbone.FormView = Backbone.View.extend({
   },
 
   render: function () {
-    var $template = this.makeModal({
+    var $template = this.makeFormModal({
       content: this.template({
         model: this.model,
         status: this.status

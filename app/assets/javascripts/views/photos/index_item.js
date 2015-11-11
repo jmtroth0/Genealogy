@@ -5,8 +5,19 @@ Genealogy.Views.PhotoIndexItem = Backbone.IndexItem.extend(
   tagName: 'li',
   className: 'photo',
 
+  events: {
+    "click div.image-container": "openPhotoModal",
+  },
+
   initialize: function (options) {
     this.formViewType = Genealogy.Views.PhotoFormView;
     this.initializeItem(options);
+  },
+
+  openPhotoModal: function (e) {
+    var photoShow = new Genealogy.Views.ShowPhoto({
+      model: this.model
+    });
+    this.$el.append(photoShow.render().$el);
   },
 }));
