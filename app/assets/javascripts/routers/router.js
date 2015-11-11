@@ -31,8 +31,15 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  showDocuments: function () {
+    var documents = new Genealogy.Collections.Documents();
+    documents.fetch();
+    var view = new Genealogy.Views.DocumentsIndex({ collection: documents });
+    this._swapView(view);
+  },
+
   _swapView: function (view) {
-    this._currentView && this._currentView.remove();
+    if (this._currentView) this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(this._currentView.$el);
     this._currentView.render();

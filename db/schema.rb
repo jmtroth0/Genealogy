@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108023510) do
+ActiveRecord::Schema.define(version: 20151110192443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "documents", force: :cascade do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "title"
+    t.integer  "uploader_id",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "documents", ["uploader_id"], name: "index_documents_on_uploader_id", using: :btree
 
   create_table "family_members", force: :cascade do |t|
     t.string   "fname",       null: false
