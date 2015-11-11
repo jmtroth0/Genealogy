@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     )
 
     if @user
-      flash[:notices] = ["Welcome!"]
       sign_in @user
       redirect_to root_url
     else

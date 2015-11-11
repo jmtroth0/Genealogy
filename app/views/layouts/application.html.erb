@@ -8,9 +8,9 @@
 </head>
 <body>
 
-<%= flash[:errors].join(", ") if flash[:errors] %>
-<%= flash[:notices].join(", ") if flash[:notices] %>
-<%= button_to "Sign Out", session_url, method: :delete if signed_in? %>
+<div class="header">
+  <%= button_to "Sign Out", session_url, method: :delete if signed_in? %>
+</div>
 <%= yield %>
 
 </body>

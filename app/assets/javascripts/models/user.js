@@ -21,5 +21,23 @@ Genealogy.Models.User = Backbone.Model.extend({
 });
 
 Genealogy.Models.CurrentUser = Genealogy.Models.User.extend({
-  url: 'api/current_user'
+  url: 'api/current_user',
+
+  isSignedIn: function () {
+    return this.isNew();
+  },
+
+  signOut: function(options){
+    var model = this;
+
+    $.ajax({
+      url: "api/session/",
+      type: "DELETE",
+      dataType: 'json',
+      success: function(data){
+        model.clear();
+        options.success && options.success();
+      }
+    });
+  },
 });

@@ -1,6 +1,8 @@
 Genealogy.Routers.Router = Backbone.Router.extend({
   initialize: function ($rootEl) {
     this.$rootEl = $rootEl;
+    var header = new Genealogy.Views.Header();
+    $('.header').append(header.render().$el);
   },
 
   routes: {
@@ -44,5 +46,11 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     this._currentView = view;
     this.$rootEl.html(this._currentView.$el);
     this._currentView.render();
-  }
+  },
+
+  _requireSignedIn: function (callback) {
+    if (!user.isSignedIn()) {
+
+    }
+  },
 });

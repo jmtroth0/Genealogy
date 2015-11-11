@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit]
   resource :session, only: [:new, :create, :destroy]
 
-  namespace :api, defaults: { format: :json} do
+  namespace :api, defaults: { format: :json } do
     resources :users, only: [:show, :index]
+    resource :session, only: [:destroy]
     get 'current_user', to: 'users#current'
     resources :family_members, except: [:new, :edit]
     resources :photos, except: [:new, :edit]

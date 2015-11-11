@@ -9,7 +9,3 @@ window.Genealogy = {
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  Genealogy.initialize();
-});
