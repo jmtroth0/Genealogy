@@ -47,10 +47,4 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(this._currentView.$el);
     this._currentView.render();
   },
-
-  _requireSignedIn: function (callback) {
-    if (!user.isSignedIn()) {
-
-    }
-  },
 });

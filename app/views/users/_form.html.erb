@@ -6,6 +6,9 @@
   <% action = session_url %>
   <% button_text = "Sign In" %>
   <%= button_to "Go to Sign Up", new_user_url, method: :get  %>
+<% elsif status == :edit %>
+  <% action = edit_user_url %>
+  <% button_text = "Edit" %>
 <% end %>
 
 <form action="<%= action %>" method="POST">
