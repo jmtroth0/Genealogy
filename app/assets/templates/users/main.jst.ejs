@@ -1,4 +1,8 @@
-Hi <%= user.escape('name') %>
-<a href="#/family">See Family</a>
-<a href="#/photos">See Photos</a>
-<a href="#/documents">See Documents</a>
+<h1 class="welcome-message">Hi <%= user.escape('name') %></h1>
+<div class="nav-set">
+  <ul class="nav-options group">
+    <li class="nav group"><a href="#/family">See Family</a></li>
+    <li class="nav group"><a href="#/photos">See Photos</a></li>
+    <li class="nav group"><a href="#/documents">See Documents</a></li>
+  </ul>
+</div>

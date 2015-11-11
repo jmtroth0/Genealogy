@@ -1,0 +1,39 @@
+div.main {
+  width: 80%;
+  margin: 20px auto 0 auto;
+}
+
+h1.welcome-message {
+  text-align: center;
+}
+
+div.nav-set {
+  width: 80%;
+  margin: 0 auto;
+}
+
+ul.nav-options {
+  margin: 0 auto;
+  width: 540px;
+}
+
+li.nav {
+  float: left;
+}
+
+li.nav a {
+  display: block;
+  padding: 64px 0;
+  margin: 10px;
+  width: 140px;
+  text-align: center;
+  background: #797997;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
+li.nav a:hover {
+  cursor: pointer;
+  background: #657e65
+}

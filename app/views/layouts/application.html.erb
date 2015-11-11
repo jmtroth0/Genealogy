@@ -8,8 +8,10 @@
 </head>
 <body>
 
-<div class="header">
-  <%= button_to "Sign Out", session_url, method: :delete if signed_in? %>
+<div class="header-container">
+  <div class="header">
+    <%= button_to "Sign Out", session_url, method: :delete, form_class: "sign-out" if signed_in? %>
+  </div>
 </div>
 <%= yield %>
 

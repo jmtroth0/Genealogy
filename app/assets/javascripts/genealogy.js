@@ -5,7 +5,7 @@ window.Genealogy = {
   Mixins: {},
   Routers: {},
   initialize: function() {
-    this.router = new Genealogy.Routers.Router($('div#main'));
+    this.router = new Genealogy.Routers.Router($('div#backdrop'));
     Backbone.history.start();
   }
 };
