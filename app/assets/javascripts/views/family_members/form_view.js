@@ -1,13 +1,8 @@
 Genealogy.Views.PersonFormView = Backbone.FormView.extend({
   template: JST['family_members/form'],
 
-  initialize: function (options) {
-    this.initializeForm(options);
-  },
-
   render: function () {
-    this.renderForm();
-    this.addParentOptions();
+    Backbone.FormView.prototype.render.call(this).addParentOptions();
     return this;
   },
 
@@ -29,35 +24,35 @@ Genealogy.Views.PersonFormView = Backbone.FormView.extend({
       this.$el.find(selector).append($option);
     }.bind(this));
   },
-
-  submitForm: function (e) {
-    e.preventDefault();
-    if (this.formPending) { return; }
-
-    var attrs = $(e.target).serializeJSON().family_member;
-    var status = this.model.isNew() ? "new" : "edit";
-    if (status === "new") { this.collection.add(this.model); }
-
-    var $button = $(e.target).find('button');
-    $button.html('Pending');
-    this.formPending = true;
-
-    this.model.save(attrs, {
-      success: function () {
-        this.closeForm();
-        this.formPending = false;
-      }.bind(this),
-      error: function (model, response) {
-        var buttonText;
-        if (status === "new") {
-          this.collection.remove(model);
-          buttonText = 'Add to Family';
-        } else {
-          buttonText = 'Submit Edit';
-        }
-        $button.html(buttonText);
-        this.formPending = false;
-      }.bind(this)
-    });
-  },
+  //
+  // submitForm: function (e) {
+  //   e.preventDefault();
+  //   if (this.formPending) { return; }
+  //
+  //   var attrs = $(e.target).serializeJSON().family_member;
+  //   var status = this.model.isNew() ? "new" : "edit";
+  //   if (status === "new") { this.collection.add(this.model); }
+  //
+  //   var $button = $(e.target).find('button');
+  //   $button.html('Pending');
+  //   this.formPending = true;
+  //
+  //   this.model.save(attrs, {
+  //     success: function () {
+  //       this.closeForm();
+  //       this.formPending = false;
+  //     }.bind(this),
+  //     error: function (model, response) {
+  //       var buttonText;
+  //       if (status === "new") {
+  //         this.collection.remove(model);
+  //         buttonText = 'Add to Family';
+  //       } else {
+  //         buttonText = 'Submit Edit';
+  //       }
+  //       $button.html(buttonText);
+  //       this.formPending = false;
+  //     }.bind(this)
+  //   });
+  // },
 });

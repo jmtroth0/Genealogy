@@ -1,6 +1,8 @@
 Genealogy.Models.FamilyMember = Backbone.Model.extend({
   urlRoot: 'api/family_members',
 
+  type: "family_member",
+
   name: function () {
     return this.escape('name') ||
       (this.escape('fname') + " " + this.escape('lname'));

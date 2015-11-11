@@ -1,5 +1,5 @@
 Backbone.FormView = Backbone.View.extend({
-  initializeForm: function (options){
+  initialize: function (options){
     this.closeForm = options.closeCallback;
     this.addEvents({
       'click button.close-form': 'closeForm',
@@ -8,7 +8,7 @@ Backbone.FormView = Backbone.View.extend({
     this.status = options.status || this.model.isNew() ? 'create' : 'edit';
   },
 
-  renderForm: function () {
+  render: function () {
     var $template = this.makeModal({
       content: this.template({
         model: this.model,
@@ -16,10 +16,45 @@ Backbone.FormView = Backbone.View.extend({
       })
     });
     this.$el.append($template);
+    return this;
+  },
+
+  submitForm: function (e) {
+    e.preventDefault();
+    if (this.formPending) { return; }
+    this.formPending = true;
+
+    var attrs = getAttrs(e)[this.model.type];
+    if (this.status === "new") { this.collection.add(this.model); }
+
+    var $button = $(e.target).find('button');
+    $button.html('Pending');
+
+    this.model.save(attrs, {
+      success: function () {
+        this.closeForm();
+        this.formPending = false;
+      }.bind(this),
+      error: function (model, response) {
+        var buttonText;
+        if (this.status === "new") {
+          this.collection.remove(model);
+          buttonText = "Create";
+        } else {
+          buttonText = 'Submit Edit';
+        }
+        $button.html(buttonText);
+        this.formPending = false;
+      }.bind(this)
+    });
   },
 
   makeModal: function (options) {
     var modal = JST['shared/modal']({content: options.content});
     return $(modal);
+  },
+
+  getAttrs: function(e) {
+    return $(e.target).serializeJSON();
   },
 });

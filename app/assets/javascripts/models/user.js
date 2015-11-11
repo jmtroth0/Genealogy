@@ -1,6 +1,8 @@
 Genealogy.Models.User = Backbone.Model.extend({
   url: 'api/users',
 
+  type: "user",
+
   parse: function (payload) {
     if (payload.family_members) {
       this.family().set(payload.family_members);
