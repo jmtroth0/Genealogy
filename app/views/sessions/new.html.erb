@@ -1,5 +1,5 @@
 <h1>Sign In</h1>
 
-<%= render 'users/form', status: :session %>
+<%= render 'users/form', action: session_url, button_text: "Sign In" %>
 
-<%= link_to 'Back', users_url %>
+<%= link_to 'Sign In', new_user_url %>
