@@ -8,13 +8,11 @@ h1.welcome-message {
 }
 
 div.nav-set {
-  width: 80%;
   margin: 0 auto;
 }
 
 ul.nav-options {
   margin: 0 auto;
-  width: 540px;
 }
 
 li.nav {
