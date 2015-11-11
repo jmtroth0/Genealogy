@@ -1,9 +1,12 @@
 module Api
   class PhotosController < ApiController
     wrap_parameters false
-    
+
     def create
       @photo = current_user.photos.new(photo_params)
+      if @photo.title == ""
+        @photo.title = photo_params['image'].original_filename
+      end
 
       if @photo.save
         render :show
