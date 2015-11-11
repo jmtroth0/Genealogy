@@ -1,4 +1,4 @@
-Genealogy.Mixins.IndexItem = {
+Backbone.IndexItem = Backbone.CompositeView.extend ({
   initializeItem: function (options) {
     this.listenTo(this.model, 'sync', this.render);
     this.addEvents({
@@ -31,4 +31,4 @@ Genealogy.Mixins.IndexItem = {
       }.bind(this)
     });
   },
-};
+});

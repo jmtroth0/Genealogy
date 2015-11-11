@@ -1,5 +1,5 @@
-Genealogy.Views.FamilyIndexItem = Backbone.CompositeView.extend(
-  _.extend({}, Genealogy.Mixins.FormModal, Genealogy.Mixins.IndexItem, {
+Genealogy.Views.FamilyIndexItem = Backbone.IndexItem.extend(
+  _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['family_members/index_item'],
   tagName: 'li',
