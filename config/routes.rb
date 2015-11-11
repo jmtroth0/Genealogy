@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     get 'current_user', to: 'users#current'
     resources :family_members, except: [:new, :edit]
     resources :photos, except: [:new, :edit]
+    resources :documents, except: [:new, :edit]
   end
 end

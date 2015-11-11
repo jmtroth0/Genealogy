@@ -1,8 +1,9 @@
 Backbone.Model.prototype.saveFormData = function (formData, options) {
   var method = this.isNew() ? "POST" : "PATCH";
   var model = this;
+
   $.ajax({
-    url: this.urlRoot,
+    url: _.result(model, "url"),
     type: method,
     data: formData,
     processData: false,

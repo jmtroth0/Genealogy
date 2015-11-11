@@ -8,6 +8,7 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     "main": "main",
     "family": "showFamily",
     "photos": "showPhotos",
+    "documents": "showDocuments",
   },
 
   main: function() {

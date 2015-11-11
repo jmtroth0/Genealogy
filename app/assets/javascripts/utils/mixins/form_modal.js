@@ -20,27 +20,3 @@ Genealogy.Mixins.FormModal = {
     this.$el.find('div.form-space').remove();
   },
 };
-
-Genealogy.Mixins.FormView = {
-  initializeForm: function (options){
-    this.closeForm = options.closeCallback;
-    this.addEvents({
-      'click button.close-form': 'closeForm',
-      "submit form": "submitForm"
-    });
-  },
-
-  renderForm: function () {
-    var $template = this.makeModal({
-      content: this.template({
-        model: this.model
-      })
-    });
-    this.$el.append($template);
-  },
-
-  makeModal: function (options) {
-    var modal = JST['shared/modal']({content: options.content});
-    return $(modal);
-  },
-};

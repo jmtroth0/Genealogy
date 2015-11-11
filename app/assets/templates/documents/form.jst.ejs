@@ -1,8 +1,8 @@
 <% if (status === "create") { %>
-  <% var titleText = "Create Photo" %>
+  <% var titleText = "Create Document" %>
   <% var buttonText = "Upload" %>
 <% } else { %>
-  <% var titleText = "Edit Photo Info" %>
+  <% var titleText = "Edit Document Info" %>
   <% var buttonText = "Update" %>
 <% } %>
 
@@ -10,7 +10,7 @@
 
 <p class='errors'></p>
 
-<form>
+<form class="document-form">
   <label for="title">Title</label>
   <input
     id="title"
@@ -18,11 +18,10 @@
     name="title"
     value="<%= model.escape("title") %>">
 
-  <% if (status === "create") { %>
-    <label for="input-photo-image">Image</label>
-    <input id="input-photo-image" type="file" name="photo[image]">
-    <img src="" id="preview-post-image" width="100">
-  <% } %>
+<% if (status === "create") { %>
+  <label for="input-document-file">File</label>
+  <input id="input-document-file" type="file" name="document[file]">
+<% } %>
 
   <button class="submit"><%= buttonText %></button>
 </form>

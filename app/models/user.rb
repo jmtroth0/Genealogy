@@ -9,9 +9,8 @@ class User < ActiveRecord::Base
   after_create :create_family_member_entry
 
   has_many :family_members, dependent: :destroy
-  has_many :photos,
-    foreign_key: :uploader_id,
-    dependent: :destroy
+  has_many :photos, foreign_key: :uploader_id, dependent: :destroy
+  has_many :documents, foreign_key: :uploader_id, dependent: :destroy
 
   def self.find_by_credentials(username, password)
     @user = User.find_by(username: username)

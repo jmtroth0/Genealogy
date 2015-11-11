@@ -1,5 +1,4 @@
-Genealogy.Views.PhotoFormView = Backbone.View.extend(
-  _.extend({}, Genealogy.Mixins.FormView, {
+Genealogy.Views.PhotoFormView = Backbone.FormView.extend({
 
   template: JST['photos/form'],
 
@@ -67,4 +66,4 @@ Genealogy.Views.PhotoFormView = Backbone.View.extend(
   _updatePreview: function (src) {
     this.$el.find("#preview-post-image").attr("src", src);
   }
-}));
+});

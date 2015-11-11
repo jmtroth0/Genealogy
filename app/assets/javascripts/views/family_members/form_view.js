@@ -1,5 +1,4 @@
-Genealogy.Views.PersonFormView = Backbone.View.extend(
-  _.extend({}, Genealogy.Mixins.FormView, {
+Genealogy.Views.PersonFormView = Backbone.FormView.extend({
   template: JST['family_members/form'],
 
   initialize: function (options) {
@@ -61,4 +60,4 @@ Genealogy.Views.PersonFormView = Backbone.View.extend(
       }.bind(this)
     });
   },
-}));
+});
