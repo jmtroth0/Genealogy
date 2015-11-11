@@ -1,5 +1,7 @@
-<h1>New User</h1>
+<div class="auth-form">
+  <h1>New User</h1>
 
-<%= render 'form', action: users_url, button_text: "Sign Up" %>
+  <%= render 'form', action: users_url, button_text: "Sign Up" %>
 
-<%= link_to 'Sign In', new_session_url %>
+  <%= link_to 'Already have an account? Sign In!', new_session_url %>
+</div>
