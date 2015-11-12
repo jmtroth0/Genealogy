@@ -11,12 +11,20 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
 
   render: function () {
     Backbone.IndexView.prototype.render.call(this);
-    this.$el.find('ul.collection-index').addClass('group');
-    // $('ul.collection-index').masonry({
-    //   columnWidth: 200,
-    //   itemSelector: 'li.photo',
-    //   gutter: 10,
-    // });
+    var $collection = this.$el.find('ul.collection-index');
+    if ($collection.find('img').length !== 0) { this.setMasonry($collection); }
+
     return this;
+  },
+
+  setMasonry: function ($collection) {
+    $collection.imagesLoaded( function() {
+      $collection.masonry({
+        columnWidth: 210,
+        itemSelector: '.photo',
+        animate: true,
+        transitionDuration: '0.2s',
+      });
+    });
   }
 }));

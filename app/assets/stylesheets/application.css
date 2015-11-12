@@ -29,7 +29,7 @@ ul, li, a, input {
  box-sizing: content-box;
  background: transparent;
  font-family: sans-serif;
- overflow: hidden;
+ overflow: scroll;
 }
 
 html, body {
