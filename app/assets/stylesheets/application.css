@@ -16,7 +16,7 @@
 
 html, body, h1, h2, h3,
 h4, h5, h6, div, button,
-ul, li, a {
+ul, li, a, input {
  margin: 0;
  padding: 0;
  border: 0;
@@ -29,6 +29,7 @@ ul, li, a {
  box-sizing: content-box;
  background: transparent;
  font-family: sans-serif;
+ overflow: hidden;
 }
 
 html, body {
@@ -38,12 +39,25 @@ html, body {
 div#backdrop{
  min-height: calc(100% - 41);
  overflow: auto;
- position: relative;
  padding: 20px;
 }
 
 ul {
  list-style: none;
+}
+
+input {
+  display: block;
+  width: 300px;
+  margin: 10px auto;
+  padding: 10px 5px;
+  background: #eee;
+  border: 1px solid #aaa;
+  outline: none;
+}
+
+input:focus {
+  background: #cbfdcb;
 }
 
 .group:after {

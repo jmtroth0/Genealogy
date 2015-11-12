@@ -3,7 +3,7 @@ Genealogy.Views.PhotoIndexItem = Backbone.IndexItem.extend(
 
   template: JST['photos/index_item'],
   tagName: 'li',
-  className: 'photo',
+  className: 'photo group',
 
   events: {
     "click div.image-container": "openPhotoModal",
@@ -15,9 +15,10 @@ Genealogy.Views.PhotoIndexItem = Backbone.IndexItem.extend(
   },
 
   openPhotoModal: function (e) {
+    if (this.$el.find('section.modal').length !== 0) { return; }
     var photoShow = new Genealogy.Views.ShowPhoto({
       model: this.model
     });
-    this.$el.append(photoShow.render().$el);
+    $('#backdrop').prepend(photoShow.render().$el);
   },
 }));

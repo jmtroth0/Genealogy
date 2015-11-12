@@ -2,6 +2,7 @@ Genealogy.Views.ShowPhoto = Backbone.View.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['photos/show'],
+  className: "photo-show-container",
 
   events: {
     "click .close-modal": "close"
