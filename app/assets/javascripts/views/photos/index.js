@@ -33,6 +33,7 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
     });
   },
 
+// MAKE THIS WORK
   // removeModel: function (model, collection) {
   //   var selectorSubviews = this.subviews('ul.collection-index');
   //   var i = selectorSubviews.findIndex(function (subview) {

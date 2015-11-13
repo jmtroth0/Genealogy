@@ -1,12 +1,17 @@
-Genealogy.Views.ShowPhoto = Backbone.View.extend(
+Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['photos/show'],
   className: "photo-show-container",
+  formViewType: Genealogy.Views.PhotoFormView,
 
   events: {
     "click .close-modal": "close",
+    "click .edit": "openForm",
+  },
 
+  initialize: function () {
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   render: function () {
