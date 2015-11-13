@@ -14,6 +14,7 @@ gem 'backbone-on-rails'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 2.0'
+gem 'rails_12factor'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
