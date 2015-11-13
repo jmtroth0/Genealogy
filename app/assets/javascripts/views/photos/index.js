@@ -4,21 +4,24 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
   className: 'photos-main-index',
 
   initialize: function (options) {
-    Backbone.IndexView.prototype.initialize.call(this);
     this.formViewType = Genealogy.Views.PhotoFormView;
     this.indexItemView = Genealogy.Views.PhotoIndexItem;
-    this.listenTo(this.collection, 'add remove', this.render); // fix this soon
+
+    this.listenTo(this.collection, 'add', this.addModel);
+    this.listenTo(this.collection, 'remove', this.removeModel);
+
     $(window).on('resize', this.adjustCollectionWidth.bind(this));
   },
 
   render: function () {
     Backbone.IndexView.prototype.render.call(this);
     var $collection = this.$el.find('ul.collection-index');
-    if ($collection.find('img').length !== 0) {
+    if ($collection.find('img').length === this.collection.length) {
       $collection.imagesLoaded(function() {
         this.setMasonry();
       }.bind(this));
     }
+
     this.adjustCollectionWidth();
 
     return this;
@@ -38,17 +41,21 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
     this.$el.find('ul.collection-index').css('width', width);
   },
 
-// MAKE THIS WORK
-  // removeModel: function (model, collection) {
-  //   var selectorSubviews = this.subviews('ul.collection-index');
-  //   var i = selectorSubviews.findIndex(function (subview) {
-  //     return subview.model === model;
-  //   });
-  //   if (i === -1) { return; }
-  //
-  //   this.$el.find('ul.collection-index').
-  //     masonry('remove', selectorSubviews.toArray()[i].$el);
-  //
-  //   Backbone.IndexView.prototype.removeModel.call(this, model, collection);
-  // }
+  addModel: function (model) {
+    var itemView = Backbone.IndexView.prototype.addModel.call(this, model);
+    this.$el.find('ul.collection-index').imagesLoaded(function() {
+      this.$el.find('ul.collection-index').masonry('appended', itemView.$el);
+    }.bind(this));
+  },
+
+  removeModel: function (model, collection) {
+    var selectorSubviews = this.subviews('ul.collection-index');
+    var i = this.getIndexOfModelView(selectorSubviews, model);
+
+    this.$el.find('ul.collection-index')
+      .masonry('remove', selectorSubviews.toArray()[i].$el)
+      .masonry('layout');
+
+    Backbone.IndexView.prototype.removeModel.call(this, model, collection);
+  }
 }));
