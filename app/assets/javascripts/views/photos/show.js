@@ -19,13 +19,14 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
     this.$el.html(this.makeModal({ content: content }));
     $(window).on('resize', this.adjustPhotoSize.bind(this));
     this.adjustPhotoSize();
+    this.$el.find('article.content').addClass('group');
     return this;
   },
 
   adjustPhotoSize: function () {
     var $img = this.$el.find('img');
-    var width = window.innerWidth * 0.6;
-    var height = window.innerHeight * 0.7;
+    var width = window.innerWidth * 0.55;
+    var height = window.innerHeight * 0.6;
     $img.css('max-width', width);
     $img.css('max-height', height);
   },

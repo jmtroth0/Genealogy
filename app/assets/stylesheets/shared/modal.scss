@@ -11,16 +11,18 @@ section.modal {
     z-index: 20;
     background: #DEEDEB;
     max-width: 70%;
+    max-height: 80%;
     margin: 20px auto 20px auto;
     padding: 20px;
     border: 2px solid #aaa;
     border-radius: 5px;
+    overflow-y: scroll;
   }
 
   button.close-modal {
-    position: absolute;
-    right: 5px;
-    top: 5px;
+    position: fixed;
+    right: 15%;
+    top: 30px;
   }
 
   div.modal-screen {

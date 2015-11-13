@@ -24,12 +24,11 @@
     <img src="" id="preview-post-image" width="100">
   <% } %>
 
+  <label for="description">What is this photo of?</label>
+  <br>
   <textarea
     id="description"
-    name="description"
-    placeholder="description">
-    <%= model.escape("description") %>
-  </textarea>
+    name="description"><%= model.escape("description") %></textarea>
 
   <button class="submit"><%= buttonText %></button>
 </form>

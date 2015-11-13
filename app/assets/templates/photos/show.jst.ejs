@@ -1,4 +1,6 @@
-<h1 class="title"><%= this.model.escape('title') %></h1>
-<img src="<%= this.model.escape('image_url') %>">
-<p><%= this.model.escape('description') %></p>
+<img class="group" src="<%= this.model.escape('image_url') %>">
+<section class="photo-info group">
+  <h1 class="title"><%= this.model.escape('title') %></h1>
+  <p><%= this.model.escape('description') %></p>
+</section>
 <button class="edit">Edit</button>
