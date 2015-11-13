@@ -7,7 +7,8 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
     Backbone.IndexView.prototype.initialize.call(this);
     this.formViewType = Genealogy.Views.PhotoFormView;
     this.indexItemView = Genealogy.Views.PhotoIndexItem;
-    this.listenTo(this.collection, 'add remove', this.render);
+    this.listenTo(this.collection, 'add remove', this.render); // fix this soon
+    $(window).on('resize', this.adjustCollectionWidth.bind(this));
   },
 
   render: function () {
@@ -17,9 +18,8 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
       $collection.imagesLoaded(function() {
         this.setMasonry();
       }.bind(this));
-    } else {
-      this.setMasonry();
     }
+    this.adjustCollectionWidth();
 
     return this;
   },
@@ -31,6 +31,11 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
       animate: true,
       transitionDuration: '0.2s',
     });
+  },
+
+  adjustCollectionWidth: function (e) {
+    var width = Math.ceil(window.innerWidth * 0.8 / 210) * 210;
+    this.$el.find('ul.collection-index').css('width', width);
   },
 
 // MAKE THIS WORK
