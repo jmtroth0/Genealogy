@@ -19,10 +19,14 @@ section.modal {
     overflow-y: scroll;
   }
 
+  button {
+    opacity: .8;
+  }
+
   button.close-modal {
-    position: fixed;
-    right: 15%;
-    top: 30px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
   }
 
   div.modal-screen {
