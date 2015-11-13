@@ -12,14 +12,14 @@ Genealogy.Views.ShowPhoto = Backbone.View.extend(
   render: function () {
     var content = this.template({ photo: this.model });
     this.$el.html(this.makeModal({ content: content }));
-    $(window).on('resize', this.setStyle.bind(this));
-    this.setStyle();
+    $(window).on('resize', this.adjustPhotoSize.bind(this));
+    this.adjustPhotoSize();
     return this;
   },
 
-  setStyle: function () {
+  adjustPhotoSize: function () {
     var $img = this.$el.find('img');
-    var width = window.innerWidth * 0.7;
+    var width = window.innerWidth * 0.6;
     var height = window.innerHeight * 0.7;
     $img.css('max-width', width);
     $img.css('max-height', height);
@@ -30,7 +30,7 @@ Genealogy.Views.ShowPhoto = Backbone.View.extend(
   },
 
   remove: function () {
-    $(window).off("resize", this.setStyle);
+    $(window).off("resize", this.adjustPhotoSize);
     Backbone.View.prototype.remove.apply(this, arguments);
   }
 }));
