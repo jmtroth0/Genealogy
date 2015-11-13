@@ -13,7 +13,7 @@ Backbone.IndexItem = Backbone.CompositeView.extend ({
     return this;
   },
 
-  deleteModel: function (e) {
+  deleteModel: function (e, options) {
     // add a warning modal once there is more info to them
     if (this.destructionPending) { return; }
     $(e.currentTarget).val("Pending");
@@ -22,10 +22,12 @@ Backbone.IndexItem = Backbone.CompositeView.extend ({
     this.model.destroy({
       wait: true,
       success: function (model) {
+        if (options && options.success) options.success();
         this.removeCallback(model);
         this.destructionPending = false;
       }.bind(this),
       error: function (model, resp) {
+        if (options && options.error) options.error();
         this.$el.append(resp.errors);
         this.destructionPending = false;
       }.bind(this)

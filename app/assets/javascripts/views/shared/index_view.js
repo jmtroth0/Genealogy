@@ -34,6 +34,7 @@ declare formViewType and indexItemView
       remove: this.removeModel.bind(this)
     });
     this.addSubview('ul.collection-index', modelView);
+    return modelView;
   },
 
   removeModel: function (model, collection) {
