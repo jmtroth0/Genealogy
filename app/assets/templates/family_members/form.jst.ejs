@@ -24,5 +24,13 @@
       <option></option>
     </select>
   </label>
+
+  <br><br>
+  <label>Generation (Provide a number, 0 for your generation, 1 for your parents, 2 for your grandparents, negative numbers for newer ones)
+  <input
+    type="number"
+    name="family_member[generation]"
+    value="<%= model && model.escape('generation') %>">
+
   <button><%= model.isNew() ? "Add to Family" : "Submit Edit" %></button>
 </form>

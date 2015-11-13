@@ -50,6 +50,7 @@ quantity of these --> Could end up being set # saved in server.
 Polymorphic join table tags. Include autocomplete search (parse with space);
 
 ### Bonus Features (TBD)
+- [ ] Make main page have dynamic choices by class to be defined by teacher
 - [ ] Auto send info to Family Echo on request
 - [ ] View family tree on Family Echo
 - [ ] Create own family tree engine using Google Visualization, Dracula, or equivalent

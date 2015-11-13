@@ -15,7 +15,9 @@ Genealogy.Views.UserMain = Backbone.View.extend({
   },
 
   setNavLocation: function (e) {
-    if (window.innerWidth > 600) {
+    /*if (window.innerWidth > 1100) {
+      this.$el.find('ul.nav-options').css('width', '960px');
+    } else */if (window.innerWidth > 600) {
       this.$el.find('ul.nav-options').css('width', '480px');
     } else {
       this.$el.find('ul.nav-options').css('width', '160px');

@@ -39,7 +39,7 @@ module Api
     private
 
     def family_member_params
-      params.require(:family_member).permit(:fname, :lname, :gender)
+      params.require(:family_member).permit(:fname, :lname, :parentA, :parentB, :generation)
     end
   end
 end

@@ -2,6 +2,7 @@ Backbone.IndexView = Backbone.CompositeView.extend({
 /*
 make sure to extend formModal mixin and
 declare formViewType and indexItemView
+on extensions
 */
 
   template: JST['shared/index'],
