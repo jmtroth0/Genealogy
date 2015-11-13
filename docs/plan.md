@@ -3,16 +3,15 @@
 ## Minimum Viable Product
 Genealogy is a place to store information about your family
 
-- [ ] Create accounts
-- [ ] Log in and out
-- [ ] Add family members
-- [ ] View added family members
+- [x] Create accounts
+- [x] Log in and out
+- [x] Add family members
+- [x] View added family members
+- [x] Paperclip photos, PDF files
+- [ ] Paperclip audio, video
 - [ ] Add text-based family stories
-
-## Other Planned (Necessary) Features
-- [ ] Auto send info to Family Echo on request
-- [ ] View family tree on Family Echo
-- [ ] Upload photos, PDF files, audio, video using paperclip
+- [ ] Family treasures (pdf and photo)
+- [ ] Family recipes (pdf)
 - [ ] Tag Family Members in Family Stories and Photos
 
 ## Design Docs
@@ -51,4 +50,6 @@ quantity of these --> Could end up being set # saved in server.
 Polymorphic join table tags. Include autocomplete search (parse with space);
 
 ### Bonus Features (TBD)
+- [ ] Auto send info to Family Echo on request
+- [ ] View family tree on Family Echo
 - [ ] Create own family tree engine using Google Visualization, Dracula, or equivalent
