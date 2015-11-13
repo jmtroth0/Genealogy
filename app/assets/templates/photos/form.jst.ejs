@@ -11,11 +11,11 @@
 <p class='errors'></p>
 
 <form>
-  <label for="title">Title</label>
   <input
     id="title"
     type="text"
     name="title"
+    placeholder="Description"
     value="<%= model.escape("title") %>">
 
   <% if (status === "create") { %>
@@ -23,6 +23,13 @@
     <input id="input-photo-image" type="file" name="photo[image]">
     <img src="" id="preview-post-image" width="100">
   <% } %>
+
+  <textarea
+    id="description"
+    name="description"
+    placeholder="description">
+    <%= model.escape("description") %>
+  </textarea>
 
   <button class="submit"><%= buttonText %></button>
 </form>

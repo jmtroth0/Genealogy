@@ -46,7 +46,7 @@ ul {
  list-style: none;
 }
 
-input {
+input[type=text] {
   display: block;
   width: 300px;
   margin: 10px auto;
