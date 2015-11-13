@@ -5,7 +5,7 @@ Backbone.FormView = Backbone.View.extend({
       'click button.close-form': 'closeForm',
       "submit form": "submitForm"
     });
-    this.status = options.status || this.model.isNew() ? 'create' : 'edit';
+    this.status = options.status || (this.model.isNew() ? 'create' : 'edit');
   },
 
   render: function () {
@@ -24,9 +24,9 @@ Backbone.FormView = Backbone.View.extend({
     if (this.formPending) { return; }
     this.formPending = true;
 
-    var attrs = getAttrs(e)[this.model.type];
-    if (this.status === "new") { this.collection.add(this.model); }
-
+    var attrs = this.getAttrs(e)[this.model.type];
+    if (this.status === "create") { this.collection.add(this.model); }
+    
     var $button = $(e.target).find('button');
     $button.html('Pending');
 
