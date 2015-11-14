@@ -1,1 +1,1 @@
-json.extract! @family_member, :name
+json.partial! 'family_member', family_member: @family_member

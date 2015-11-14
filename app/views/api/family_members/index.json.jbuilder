@@ -1,3 +1,3 @@
 json.array! @family_members do |person|
-  json.extract! person, :name, :fname, :lname
+  json.partial! 'family_member', family_member: person
 end
