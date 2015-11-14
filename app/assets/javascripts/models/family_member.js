@@ -8,6 +8,25 @@ Genealogy.Models.FamilyMember = Backbone.Model.extend({
       (this.escape('fname') + " " + this.escape('lname'));
   },
 
+  generation: function () {
+    var gen = this.get('generation');
+    if (!gen && gen !== 0) {
+      return "Uncategorized";
+    } else if (gen < 0) {
+      return "Younger";
+    } else if (gen <= 2) {
+      return this.generations[gen];
+    } else if (gen > 2) {
+      return repeat("Great-", gen - 2) + "Grandparents";
+    }
+  },
+
+  generations: {
+    0: "Mine",
+    1: "Parents",
+    2: "Grandparents",
+  },
+
   parents: function () {
     var parents = [];
     if (this.get('parent_a_id')) parents.push(this.parentA());
