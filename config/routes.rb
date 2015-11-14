@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:show, :index]
+    resources :users, only: [:show]
     resource :session, only: [:destroy]
     get 'current_user', to: 'users#current'
     resources :family_members, except: [:new, :edit]

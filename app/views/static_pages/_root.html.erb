@@ -4,7 +4,9 @@
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    Genealogy.initialize();
-  });
+  <% if signed_in? %>
+    $(document).ready(function(){
+      Genealogy.initialize();
+    });
+  <% end %>
 </script>

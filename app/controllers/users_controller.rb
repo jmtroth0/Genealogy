@@ -32,7 +32,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   def destroy
     @user = user.find(params[:id])
     @user.destroy

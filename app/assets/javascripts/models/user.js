@@ -1,5 +1,5 @@
 Genealogy.Models.User = Backbone.Model.extend({
-  url: 'api/users',
+  urlRoot: 'api/users',
 
   type: "user",
 
@@ -23,7 +23,7 @@ Genealogy.Models.User = Backbone.Model.extend({
 });
 
 Genealogy.Models.CurrentUser = Genealogy.Models.User.extend({
-  url: 'api/current_user',
+  urlRoot: 'api/current_user',
 
   isSignedIn: function () {
     return this.isNew();
