@@ -46,6 +46,10 @@ ul {
  list-style: none;
 }
 
+.errors {
+  color: red;
+}
+
 input {
   display: block;
   margin: 10px auto;

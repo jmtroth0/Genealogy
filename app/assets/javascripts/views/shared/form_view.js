@@ -26,8 +26,8 @@ Backbone.FormView = Backbone.View.extend({
 
     var attrs = this.getAttrs(e)[this.model.type];
     if (this.status === "create") { this.collection.add(this.model); }
-    
-    var $button = $(e.target).find('button');
+
+    var $button = $(e.target).find('button.submit');
     $button.html('Pending');
 
     this.model.save(attrs, {
@@ -44,6 +44,8 @@ Backbone.FormView = Backbone.View.extend({
           buttonText = 'Submit Edit';
         }
         $button.html(buttonText);
+        var $errors = $('<p class="errors">' + response.responseText + '</p>');
+        this.$el.find('article.form-content').prepend($errors);
         this.formPending = false;
       }.bind(this)
     });

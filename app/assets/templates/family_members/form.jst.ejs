@@ -1,17 +1,17 @@
 <form class='family-member-form'>
 
-  <label for="fname">First Name</label>
   <input
     id="name"
     type="text"
     name="family_member[fname]"
+    placeholder="First Name"
     value="<%= model && model.escape('fname') %>">
 
-  <label for="lname">Last Name</label>
   <input
     id="name"
     type="text"
     name="family_member[lname]"
+    placeholder="Last Name"
     value="<%= model && model.escape('lname') %>">
 
   <label>ParentA
@@ -26,11 +26,12 @@
   </label>
 
   <br><br>
-  <label>Generation (Provide a number, 0 for your generation, 1 for your parents, 2 for your grandparents, negative numbers for newer ones)
+  <label>
+    Generation (Provide a number, 0 for your generation, 1 for your parents, 2 for your grandparents, negative numbers for newer ones)
   <input
     type="number"
     name="family_member[generation]"
     value="<%= model && model.escape('generation') %>">
-
-  <button><%= model.isNew() ? "Add to Family" : "Submit Edit" %></button>
+  </label>
+  <button class="submit"><%= model.isNew() ? "Add to Family" : "Submit Edit" %></button>
 </form>
