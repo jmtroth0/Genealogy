@@ -12,6 +12,26 @@
     margin: 10px 0 0 10px;
     max-width: 200px;
 
+    h1 {
+      position: absolute;
+      float: left;
+      margin: 5px 0 0 5px;
+      padding: 4px 2px;
+      border-radius: 4px;
+      opacity: .3;
+      transition: opacity .3s;
+      color: white;
+      max-width: 80%;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    &:hover h1 {
+      opacity: .7;
+      background: black;
+      transition: opacity .3s;
+    }
+
     .image-container > img {
       cursor: pointer;
     }
