@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
   end
 
   def create_family_member_entry
-    personal = self.family_members.create!(fname: self.fname, lname: self.lname)
+    personal = self.family_members.create!(
+      fname: self.fname, lname: self.lname, generation: 0
+    )
   end
 
 # password

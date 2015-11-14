@@ -11,29 +11,44 @@ user = User.create!({
   fname: 'Charlemagne', lname: 'I'
 })
 charlemagne = user.family_members.first
-pepin = user.family_members.create!({ fname: 'Pepin', lname: 'the Short' })
-bertrada = user.family_members.create!({ fname: 'Bertrada', lname: 'of Laon' })
+pepin = user.family_members.create!({
+  fname: 'Pepin', lname: 'the Short', generation: 1
+})
+bertrada = user.family_members.create!({
+  fname: 'Bertrada', lname: 'of Laon', generation: 1
+})
 charlemagne.parent_a_id = pepin.id
 charlemagne.parent_b_id = bertrada.id
 charlemagne.save!
 carloman = user.family_members.create!({
-  fname: 'Carloman', lname: 'I', parent_a: pepin, parent_b: bertrada
+  fname: 'Carloman', lname: 'I',
+  parent_a: pepin, parent_b: bertrada,
+  generation: 0
 })
-martel = user.family_members.create!({ fname: 'Charles', lname: 'Martel' })
-rotrude = user.family_members.create!({ fname: 'Rotrude', lname: 'of Trier' })
+martel = user.family_members.create!({
+  fname: 'Charles', lname: 'Martel', generation: 2
+})
+rotrude = user.family_members.create!({
+  fname: 'Rotrude', lname: 'of Trier', generation: 2
+})
 pepin.parent_a_id = martel.id
 pepin.parent_b_id = rotrude.id
 pepin.save!
-hildegard = user.family_members.create!({ fname: 'Hildegard', lname: 'the Great' })
+hildegard = user.family_members.create!({
+  fname: 'Hildegard', lname: 'the Great', generation: 0
+})
 hunch = user.family_members.create!({
-  fname: 'Pepin', lname: 'the Hunchback', parent_a: charlemagne, parent_b: hildegard
+  fname: 'Pepin', lname: 'the Hunchback',
+  parent_a: charlemagne, parent_b: hildegard, generation: -1
 })
 junior = user.family_members.create!({
-  fname: 'Charles', lname: 'the Younger', parent_a: charlemagne, parent_b: hildegard
+  fname: 'Charles', lname: 'the Younger',
+  parent_a: charlemagne, parent_b: hildegard, generation: -1
 })
 louis = user.family_members.create!({
-  fname: 'Louis', lname: 'the Pious', parent_a: charlemagne, parent_b: hildegard
+  fname: 'Louis', lname: 'the Pious',
+  parent_a: charlemagne, parent_b: hildegard, generation: -1
 })
 lothair = user.family_members.create!({
-  fname: 'Lothair', lname: 'I', parent_a: louis
+  fname: 'Lothair', lname: 'I', parent_a: louis, generation: -2
 })
