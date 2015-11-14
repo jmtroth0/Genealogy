@@ -46,6 +46,16 @@ ul {
  list-style: none;
 }
 
+input {
+  display: block;
+  margin: 10px auto;
+  background: #eee;
+  border: 1px solid #aaa;
+  outline: none;
+  width: 300px;
+  padding: 10px 5px;
+}
+
 input[type=text],
 input[type=number] {
   display: block;
@@ -53,11 +63,12 @@ input[type=number] {
   background: #eee;
   border: 1px solid #aaa;
   outline: none;
+  font-size: 24px;
 }
 
 input[type=text] {
   width: 300px;
-  padding: 10px 5px;
+  padding: 5px;
 }
 
 input[type=number] {
