@@ -15,15 +15,16 @@
     id="title"
     type="text"
     name="title"
-    placeholder="Description"
+    placeholder="Title"
     value="<%= model.escape("title") %>">
 
   <% if (status === "create") { %>
-    <label for="input-photo-image">Image</label>
+    <br>
     <input id="input-photo-image" type="file" name="photo[image]">
+    <br>
     <img src="" id="preview-post-image" width="100">
   <% } %>
-
+  <br>
   <label for="description">What is this photo of?</label>
   <br>
   <textarea

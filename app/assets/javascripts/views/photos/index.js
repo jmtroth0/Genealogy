@@ -6,9 +6,7 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
   initialize: function (options) {
     this.formViewType = Genealogy.Views.PhotoFormView;
     this.indexItemView = Genealogy.Views.PhotoIndexItem;
-
     this.listenTo(this.collection, 'add', this.addModel);
-    this.listenTo(this.collection, 'remove', this.removeModel);
 
     $(window).on('resize', this.adjustCollectionWidth.bind(this));
   },
@@ -51,11 +49,14 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
   removeModel: function (model, collection) {
     var selectorSubviews = this.subviews('ul.collection-index');
     var i = this.getIndexOfModelView(selectorSubviews, model);
+    if (i === -1) { return; }
 
     this.$el.find('ul.collection-index')
-      .masonry('remove', selectorSubviews.toArray()[i].$el)
+      .masonry('remove', selectorSubviews.toArray()[i].el)
       .masonry('layout');
 
-    Backbone.IndexView.prototype.removeModel.call(this, model, collection);
+    setTimeout(function () {
+      Backbone.IndexView.prototype.removeModel.call(this, model, collection);
+    }.bind(this), 0);
   }
 }));
