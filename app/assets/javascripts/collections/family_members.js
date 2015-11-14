@@ -4,11 +4,8 @@ Genealogy.Collections.FamilyMembers = Backbone.Collection.extend({
 
 // when adding age to attributes, add that facet
   comparator: function (person, otherPerson) {
-    var origin = person.escape('generation');
-    var other = otherPerson.escape('generation');
-
-    if (origin) origin = parseInt(origin);
-    if (other) other = parseInt(other);
+    var origin = parseInt(person.escape('generation'));
+    var other = parseInt(otherPerson.escape('generation'));
 
     if (origin !== origin || origin > other) {
       return -1;
