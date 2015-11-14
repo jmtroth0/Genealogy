@@ -17,3 +17,11 @@ Backbone.Model.prototype.saveFormData = function (formData, options) {
     },
   });
 };
+
+Backbone.Model.prototype.getNextModel = function () {
+  return this.collection.getNextModel(this);
+};
+
+Backbone.Model.prototype.getPreviousModel = function () {
+  return this.collection.getNextModel(this);
+};

@@ -13,3 +13,20 @@ Backbone.Collection.prototype.getOrFetch = function (id) {
   }
   return model;
 };
+
+// only works for sorted array
+Backbone.Collection.prototype.getNextModel = function (model) {
+  for (var i = 0; i < this.length; i++) {
+    if (this.at(i).id === model.id) {
+      return this.at(i + 1);
+    }
+  }
+};
+
+Backbone.Collection.prototype.getPreviousModel = function (model) {
+  for (var i = 0; i < this.length; i++) {
+    if (this.at(i).id === model.id) {
+      return this.at(i - 1);
+    }
+  }
+};
