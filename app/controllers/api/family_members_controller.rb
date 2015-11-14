@@ -14,8 +14,7 @@ module Api
       if @family_member.save
         render :show
       else
-        flash.now[:errors] = @family_member.errors.full_messages
-        render :new
+        render json: @family_member.errors.full_messages.join(", "), status: 422
       end
     end
 
@@ -25,8 +24,7 @@ module Api
       if @family_member.update(family_member_params)
         render :show
       else
-        flash.now[:errors] = @family_member.errors.full_messages
-        render :edit
+        render json: @family_member.errors.full_messages.join(", "), status: 422
       end
     end
 
