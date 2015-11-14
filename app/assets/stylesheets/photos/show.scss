@@ -18,6 +18,18 @@
     max-width: 50%;
   }
 
+  button.next-photo {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+
+  button.previous-photo {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+  }
+
   button.edit {
     position: absolute;
     right: 40px;

@@ -8,10 +8,13 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
   events: {
     "click .close-modal": "close",
     "click .edit": "openForm",
+    "click .next-photo": "switchToNext",
+    "click .previous-photo": "switchToPrevious",
   },
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+    $(document).on('keyup', this.keyHandler.bind(this));
   },
 
   render: function () {
@@ -21,6 +24,40 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
     this.adjustPhotoSize();
     this.$el.find('article.content').addClass('group');
     return this;
+  },
+
+  switchToNext: function (e) {
+    e.preventDefault();
+    var model = this.model.getNextModel();
+    if (!model) { model = this.model.collection.first(); }
+
+    var photoShow = new Genealogy.Views.ShowPhoto({
+      model: model
+    });
+
+    this.remove();
+    $('#backdrop').prepend(photoShow.render().$el);
+  },
+
+  switchToPrevious: function (e) {
+    e.preventDefault();
+    var model = this.model.getPreviousModel();
+    if (!model) { model = this.model.collection.last(); }
+
+    var photoShow = new Genealogy.Views.ShowPhoto({
+      model: model
+    });
+
+    this.remove();
+    $('#backdrop').prepend(photoShow.render().$el);
+  },
+
+  keyHandler: function (e) {
+    if (e.keyCode === 39) {
+      this.switchToNext(e);
+    } else if (e.keyCode === 37) {
+      this.switchToPrevious(e);
+    }
   },
 
   adjustPhotoSize: function () {
@@ -37,6 +74,7 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
 
   remove: function () {
     $(window).off("resize", this.adjustPhotoSize);
+    $(document).off('keyup', this.keyHandler.bind(this));
     Backbone.View.prototype.remove.apply(this, arguments);
   }
 }));
