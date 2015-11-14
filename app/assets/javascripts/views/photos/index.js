@@ -7,7 +7,7 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
     this.formViewType = Genealogy.Views.PhotoFormView;
     this.indexItemView = Genealogy.Views.PhotoIndexItem;
     this.listenTo(this.collection, 'add', this.addModel);
-
+    this.listenTo(this.collection, 'sync', this.adjustCollectionWidth);
     $(window).on('resize', this.adjustCollectionWidth.bind(this));
   },
 
@@ -27,22 +27,27 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
 
   setMasonry: function () {
     this.$el.find('ul.collection-index').masonry({
-      columnWidth: 210,
+      columnWidth: 200,
       itemSelector: '.photo',
+      gutter: 10,
       animate: true,
       transitionDuration: '0.2s',
     });
   },
 
   adjustCollectionWidth: function (e) {
-    var width = Math.ceil(window.innerWidth * 0.8 / 210) * 210;
+    if (this.collection.length === 0) { return; }
+    var colWidth = Math.ceil(this.collection.length * 210);
+    var winWidth = Math.ceil(window.innerWidth * 0.8 / 210) * 210;
+    var width = colWidth < winWidth ? colWidth : winWidth;
     this.$el.find('ul.collection-index').css('width', width);
   },
 
   addModel: function (model) {
+    var $collection = this.$el.find('ul.collection-index');
     var itemView = Backbone.IndexView.prototype.addModel.call(this, model);
-    this.$el.find('ul.collection-index').imagesLoaded(function() {
-      this.$el.find('ul.collection-index').masonry('appended', itemView.$el);
+    $collection.imagesLoaded(function() {
+      $collection.masonry('appended', itemView.$el);
     }.bind(this));
   },
 

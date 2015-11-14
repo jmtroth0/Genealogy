@@ -3,13 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .photos-main-index .collection-index {
-  width: 80%;
-  margin: 0 auto;
+  margin: 10px auto;
 
   .photo {
     display: block;
     float: left;
-    margin: 10px 0 0 10px;
     max-width: 200px;
 
     h1 {
