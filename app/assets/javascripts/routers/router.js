@@ -21,9 +21,10 @@ Genealogy.Routers.Router = Backbone.Router.extend({
   },
 
   showFamily: function () {
-    var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
-    user.fetch({parse: true});
-    var view = new Genealogy.Views.FamilyIndex({ user: user });
+    var family = (Genealogy.currentUser && Genealogy.currentUser.family()) ||
+                    new Genealogy.Collections.FamilyMembers();
+    family.fetch();
+    var view = new Genealogy.Views.FamilyIndex({ collection: family });
     this._swapView(view);
   },
 

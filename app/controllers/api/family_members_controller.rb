@@ -5,7 +5,7 @@ module Api
     end
 
     def show
-      @family_member = FamilyMember.find(params[:id])
+      @family_member = FamilyMember.include(:taggables).find(params[:id])
     end
 
     def create
