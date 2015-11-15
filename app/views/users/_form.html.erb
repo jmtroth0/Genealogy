@@ -1,3 +1,6 @@
+<%= flash[:notices].join(", ") if flash[:notices] %>
+<p class="errors"><%= flash[:errors].join(", ") if flash[:errors] %></p>
+
 <form class="authentication" action="<%= action %>" method="POST">
   <%= form_auth_token %>
 
