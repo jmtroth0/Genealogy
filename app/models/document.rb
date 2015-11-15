@@ -3,7 +3,6 @@ class Document < ActiveRecord::Base
   has_attached_file :file, styles: { pdf_thumb: ["200x200", :png] }
   validates_attachment_content_type :file, content_type: /\w*\/pdf/
 
-  belongs_to :uploader, class_name: 'User'
-
-  include Taggable
+  belongs_to :uploader,
+    class_name: 'User'
 end
