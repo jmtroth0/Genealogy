@@ -14,7 +14,7 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    // $(document).on('keyup', this.keyHandler.bind(this));
+    $(document).on('keyup', this.keyHandler.bind(this));
   },
 
   render: function () {
@@ -28,37 +28,23 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
 
   switchToNext: function (e) {
     e.preventDefault();
-    var model = this.model.getNextModel();
-    if (!model) { model = this.model.collection.first(); }
-
-    var photoShow = new Genealogy.Views.ShowPhoto({
-      model: model
-    });
-
-    this.remove();
-    $('#backdrop').prepend(photoShow.render().$el);
+    this.model = this.model.getNextModel();
+    this.render();
   },
 
   switchToPrevious: function (e) {
     e.preventDefault();
-    var model = this.model.getPreviousModel();
-    if (!model) { model = this.model.collection.last(); }
-
-    var photoShow = new Genealogy.Views.ShowPhoto({
-      model: model
-    });
-
-    this.remove();
-    $('#backdrop').prepend(photoShow.render().$el);
+    this.model = this.model.getPreviousModel();
+    this.render();
   },
 
-  // keyHandler: function (e) {
-  //   if (e.keyCode === 39) {
-  //     this.switchToNext(e);
-  //   } else if (e.keyCode === 37) {
-  //     this.switchToPrevious(e);
-  //   }
-  // },
+  keyHandler: function (e) {
+    if (e.keyCode === 39) {
+      this.switchToNext(e);
+    } else if (e.keyCode === 37) {
+      this.switchToPrevious(e);
+    }
+  },
 
   adjustPhotoSize: function () {
     var $img = this.$el.find('img');
@@ -74,7 +60,7 @@ Genealogy.Views.ShowPhoto = Backbone.CompositeView.extend(
 
   remove: function () {
     $(window).off("resize", this.adjustPhotoSize);
-    // $(document).off('keyup', this.keyHandler.bind(this));
+    $(document).off('keyup', this.keyHandler.bind(this));
     Backbone.View.prototype.remove.apply(this, arguments);
   }
 }));

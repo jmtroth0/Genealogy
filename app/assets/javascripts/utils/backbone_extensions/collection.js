@@ -17,10 +17,11 @@ Backbone.Collection.prototype.getOrFetch = function (id) {
 // only works for sorted array
 Backbone.Collection.prototype.getNextModel = function (model) {
   for (var i = 0; i < this.length; i++) {
-    if (this.at(i).id === model.id) {
+    if (this.at(i).id === model.id && i !== this.length - 1) {
       return this.at(i + 1);
     }
   }
+  return this.at(0);
 };
 
 Backbone.Collection.prototype.getPreviousModel = function (model) {
