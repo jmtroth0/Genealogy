@@ -15,6 +15,7 @@ module Api
         render :show
       else
         render json: @section.errors.full_messages.join(", "), status: :unprocessable_entity
+      end
     end
 
     def update
@@ -28,11 +29,8 @@ module Api
 
     def destroy
       @section = Section.find(params[:id])
-      @section.destroy
-      respond_to do |format|
-        format.html { redirect_to sections_url, notice: 'Section was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      @section.destroy!
+      render :show
     end
 
     private
