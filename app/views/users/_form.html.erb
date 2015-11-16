@@ -24,9 +24,8 @@
 
   <select class="select-section" name="user[section_id]">
     <option></option>
-    <% section_id = @user.section.id if @user.section %>
     <% @sections.each do |section| %>
-      <option value="<%= section.id %>" <%= "selected" if section.id == section_id %>>
+      <option value="<%= section.id %>" <%= "selected" if section.id == @user.section_id %>>
         <%= section.name || section.year %></option>
     <% end %>
   </select>

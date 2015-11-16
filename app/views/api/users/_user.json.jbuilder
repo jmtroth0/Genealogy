@@ -1,5 +1,7 @@
 json.extract! user, :id, :email, :name, :type
-json.section do
-  json.extract! user.section, :id, :name, :year
+if user.section
+  json.section do
+    json.extract! user.section, :id, :name, :year
+  end
+  # also add units later
 end
-# also add units later
