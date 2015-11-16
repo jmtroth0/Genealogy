@@ -5,13 +5,12 @@
 column name       | data type | details
 ------------------|-----------|-----------------------
 id                | integer   | not null, primary key
-username          | string    | not null
+email             | string    | not null
 fname             | string    |
 lname             | string    |
 password_digest   | string    | not null
 session_token     | string    | not null
-family_tree       | string    | will be a url referencing Family Echo
-tree_expiration   | date      | Family Echo dumps after 7 days
+family_tree       | string    | will be a url referencing Family Echo or possibly a pdf file
 class_id          | integer   | not null, foreign key, (references classes)
 
 ## Classes
@@ -21,16 +20,15 @@ column name   | data type | details
 id            | integer   | not null, primary key
 year          | string    | not null
 name          | string    |
+teacher_id    | integer   | not null
 
-
-## Devices -- implement later
-
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-user_id        | integer   | not null, foreign key, (references users)
-session_token  | string    | not null
-
+## Class Sections
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+class_id      | integer   | not null
+name          | string    | not null
+description   | text      |
 
 ## Family Members
 column name    | data type | details
@@ -41,42 +39,54 @@ fname          | string    | not null
 lname          | string    | not null
 mother_id      | integer   | foreign key, (self referencing)
 father_id      | integer   | foreign key, (self referencing)
+partner_id     | integer   | foreign key, (self referencing)
 birth_date     | date      |
 death_date     | date      |
 maiden name    | string    |
 gender         | string    |
 
-## Partnership Info
+## Submission
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+user_id         | integer   | not null
+class_section_id| integer   | not null
+title           | string    |
+description     | text      |
+
+## Submission Uploads
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+submission_id | integer   | not null
+upload        | references| polymorphic, not null
+
+## Photos
 column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
-partner1_id    | integer   | not null, foreign key, (self referencing)
-partner2_id    | integer   | not null, foreign key, (self referencing)
-wedding_date   | date      |
-end_date       | date      |
+title          | string    |
+description    | text      |
+uploader_id    | integer   | not null
+paperclip stuff|           |
 
-## Family Photos
+## Documents
 column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
-user_id        | integer   | not null, foreign key (references users)
-paperclip stuff| varies    |
+title          | string    |
+description    | text      |
+uploader_id    | integer   | not null
+paperclip stuff|           |
 
--- make these two a polymorphic table? Need to check out paperclip a bit more for that.
-
-## Family Documents
+## Audio Files
 column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
-user_id        | integer   | not null, foreign key (references users)
-paperclip stuff| varies    |
-
-## Family Stories
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-user_id        | integer   | not null, foreign key (references users)
-content        | text      |
+title          | string    |
+description    | text      |
+uploader_id    | integer   | not null
+paperclip stuff|           |
 
 ## Family Member Stuff Taggings
 column name       | data type | details
