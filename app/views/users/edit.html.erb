@@ -1,8 +1,5 @@
 <div class="auth-form">
   <h1>Editing User</h1>
 
-  <%= render 'form', action: edit_user_url, button_text: "Update" %>
-
-  <%= link_to 'Show', @user %> |
-  <%= link_to 'Back', users_path %>
+  <%= render 'form', :url => { :action => "update" }, action: user_url(@user), button_text: "Update" %>
 </div>

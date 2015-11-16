@@ -1,15 +1,7 @@
 module Api
   class UsersController < ApiController
-    # def index
-    #   @users = User.all
-    # end
-
-    def show
-      @user = User.includes(:family_members).find(params[:id])
-    end
-
     def current
-      @user = User.includes(:family_members).find_by(session_token: session[:token])
+      @user = User.find_by(session_token: session[:token])
       render :show
     end
   end

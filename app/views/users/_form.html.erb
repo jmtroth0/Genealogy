@@ -2,6 +2,9 @@
 <p class="errors"><%= flash[:errors].join(", ") if flash[:errors] %></p>
 
 <form class="authentication" action="<%= action %>" method="POST">
+  <% if button_text == "Update" %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
   <%= form_auth_token %>
 
 <% if button_text == "Sign Up" || button_text == "Update" %>
@@ -18,6 +21,15 @@
     name="user[lname]"
     placeholder="Last Name"
     value="<%= @user.lname %>">
+
+  <select class="select-section" name="user[section_id]">
+    <option></option>
+    <% section_id = @user.section.id if @user.section %>
+    <% @sections.each do |section| %>
+      <option value="<%= section.id %>" <%= "selected" if section.id == section_id %>>
+        <%= section.name || section.year %></option>
+    <% end %>
+  </select>
 <% end %>
 
   <input

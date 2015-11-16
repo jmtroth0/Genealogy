@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = User.create!({
-  username: 'charlemagne', password: 'holy rome',
+  email: 'charlemagne', password: 'holy rome',
   fname: 'Charlemagne', lname: 'I'
 })
 charlemagne = user.family_members.first

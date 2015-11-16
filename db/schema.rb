@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115175359) do
+ActiveRecord::Schema.define(version: 20151116051054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20151115175359) do
 
   add_index "photos", ["uploader_id"], name: "index_photos_on_uploader_id", using: :btree
 
+  create_table "sections", force: :cascade do |t|
+    t.integer  "year",       null: false
+    t.string   "name"
+    t.integer  "teacher_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "sections", ["name"], name: "index_sections_on_name", unique: true, using: :btree
+  add_index "sections", ["teacher_id"], name: "index_sections_on_teacher_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "family_member_id", null: false
     t.string   "taggable_type"
@@ -67,14 +78,26 @@ ActiveRecord::Schema.define(version: 20151115175359) do
   add_index "taggings", ["family_member_id"], name: "index_taggings_on_family_member_id", using: :btree
   add_index "taggings", ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id", using: :btree
 
+  create_table "units", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.integer  "section_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "units", ["section_id"], name: "index_units_on_section_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                              null: false
-    t.string   "password_digest",                    null: false
-    t.string   "session_token",                      null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "email",                               null: false
+    t.string   "password_digest",                     null: false
+    t.string   "session_token",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "fname",           default: "Joe"
     t.string   "lname",           default: "Schmoe"
+    t.string   "type",            default: "Student"
+    t.integer  "section_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

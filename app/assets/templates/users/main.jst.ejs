@@ -1,4 +1,5 @@
 <h1 class="welcome-message">Hi <%= user.escape('name') %></h1>
+<h2>Welcome to kitah <%= user.get('section') && user.get('section').name %></h2>
 <div class="nav-set">
   <ul class="nav-options group">
     <li class="nav group"><a href="#/family">Family</a></li>

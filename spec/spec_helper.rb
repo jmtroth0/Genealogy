@@ -91,16 +91,16 @@ RSpec.configure do |config|
 =end
 end
 
-def sign_up(username)
+def sign_up(email)
   visit new_user_url
-  fill_in "Username", with: username
+  fill_in "Email", with: email
   fill_in "Password", with: '123456'
   click_button 'Sign Up'
 end
 
-def sign_in(username)
+def sign_in(email)
   visit new_session_url
-  fill_in "Username", with: username
+  fill_in "Email", with: email
   fill_in "Password", with: '123456'
   click_button 'Sign In'
 end
@@ -109,12 +109,12 @@ def sign_out
   click_button 'Sign Out'
 end
 
-def sign_up_as_testing_username
-  sign_up("testing_username")
+def sign_up_as_testing_email
+  sign_up("testing_email")
 end
 
-def sign_in_as_testing_username
-  sign_in("testing_username")
+def sign_in_as_testing_email
+  sign_in("testing_email")
 end
 
 def sample_photo (filename = "photos/kitty.jpg")

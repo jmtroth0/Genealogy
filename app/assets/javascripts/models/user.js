@@ -43,3 +43,11 @@ Genealogy.Models.CurrentUser = Genealogy.Models.User.extend({
     });
   },
 });
+
+Genealogy.Models.Teacher = Genealogy.Models.User.extend({
+  urlRoot: 'api/teachers',
+});
+
+Genealogy.Models.Student = Genealogy.Models.User.extend({
+  urlRoot: 'api/students',
+});

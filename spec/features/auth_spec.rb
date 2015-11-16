@@ -11,14 +11,14 @@ feature "the signup process" do
   feature "signing up a user" do
     before(:each) { visit new_user_url }
 
-    it "validates username presence" do
+    it "validates email presence" do
 
       click_button 'Sign Up'
-      expect(page).to have_content "Username can't be blank"
+      expect(page).to have_content "Email can't be blank"
     end
 
     it "validates password length >= 6" do
-      fill_in 'Username', with: 'testing_username'
+      fill_in 'Email', with: 'testing_email'
       click_button 'Sign Up'
       expect(page).to have_content 'Password is too short (minimum is 6 characters)'
     end
@@ -27,16 +27,16 @@ end
 
 feature "logging in" do
   before do
-    sign_up_as_testing_username
+    sign_up_as_testing_email
     sign_out
   end
 
-  it "displays error if invalid username/password" do
+  it "displays error if invalid email/password" do
     visit new_session_url
-    fill_in 'Username', with: 'wrong_username'
+    fill_in 'Email', with: 'wrong_email'
     fill_in 'Password', with: 'wrong_password'
     click_button 'Sign In'
-    expect(page).to have_content 'Invalid Username and/or Password'
+    expect(page).to have_content 'Invalid email and/or Password'
   end
 
 end
@@ -48,10 +48,10 @@ feature "logging out" do
     expect(page).to have_content 'Sign Up'
   end
 
-  it "doesn't show username on the homepage after logout" do
-    sign_up_as_testing_username
+  it "doesn't show email on the homepage after logout" do
+    sign_up_as_testing_email
     sign_out
-    expect(page).not_to have_content 'testing_username'
+    expect(page).not_to have_content 'testing_email'
   end
 
 end

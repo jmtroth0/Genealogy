@@ -13,20 +13,20 @@ session_token     | string    | not null
 family_tree       | string    | will be a url referencing Family Echo or possibly a pdf file
 class_id          | integer   | not null, foreign key, (references classes)
 
-## Classes
+## Sections
 
 column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
-year          | string    | not null
+year          | integer   | not null
 name          | string    |
 teacher_id    | integer   | not null
 
-## Class Sections
+## Units
 column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
-class_id      | integer   | not null
+section_id    | integer   | not null, (references section)
 name          | string    | not null
 description   | text      |
 
@@ -50,7 +50,7 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 user_id         | integer   | not null
-class_section_id| integer   | not null
+section_unit_id | integer   | not null
 title           | string    |
 description     | text      |
 

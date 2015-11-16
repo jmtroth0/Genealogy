@@ -1,11 +1,16 @@
 div.main {
   width: 90%;
   margin: 20px auto 0 auto;
+
+  h1.welcome-message, h2 {
+    text-align: center;
+  }
+  h1.welcome-message {
+    font-size: 20px;
+  }
 }
 
-h1.welcome-message {
-  text-align: center;
-}
+
 
 div.nav-set {
   margin: 0 auto;
