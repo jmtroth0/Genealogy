@@ -20,7 +20,7 @@ module Api
     def update
       @section = Section.find(params[:id])
       if @section.save
-        render json: render :show
+        render :show
       else
         render json: @section.errors.full_messages.join(", "), status: :unprocessable_entity
       end
