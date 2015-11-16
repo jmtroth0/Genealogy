@@ -23,5 +23,5 @@ Backbone.Model.prototype.getNextModel = function () {
 };
 
 Backbone.Model.prototype.getPreviousModel = function () {
-  return this.collection.getNextModel(this);
+  return this.collection.getPreviousModel(this);
 };
