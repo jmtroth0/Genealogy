@@ -46,3 +46,10 @@
 
   <button><%= button_text %></button>
 </form>
+
+<form class="" action="<%= session_url %>" method="post">
+  <%= form_auth_token %>
+  <input type="hidden" name="user[email]" value="charlemagne">
+  <input type="hidden" name="user[password]" value="holy rome">
+  <button class="guest">Sign in as Guest</button>
+</form>
