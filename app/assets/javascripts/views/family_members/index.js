@@ -10,6 +10,23 @@ Genealogy.Views.FamilyIndex = Backbone.IndexView.extend(
     Backbone.IndexView.prototype.initialize.call(this);
   },
 
+  render: function () {
+    Backbone.IndexView.prototype.render.call(this);
+
+    var $gens = this.$el.find('.collection-index').find('li.generation');
+
+    var greatestHeight;
+    $.each($gens, function(idx, $li) {
+      if (!greatestHeight || greatestHeight < $($li).height()) {
+        greatestHeight = $($li).height();
+      }
+    });
+
+    $gens.css('min-height', greatestHeight);
+
+    return this;
+  },
+
   addModel: function (model) {
     var modelView = new this.indexItemView({
       model: model,
