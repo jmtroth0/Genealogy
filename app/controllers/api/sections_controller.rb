@@ -38,3 +38,4 @@ module Api
         params.require(:section).permit(:year, :name, :teacher_id)
       end
   end
+end
