@@ -1,0 +1,24 @@
+<% if (status === "create") { %>
+  <% var titleText = "Create Section" %>
+  <% var buttonText = "Create" %>
+<% } else { %>
+  <% var titleText = "Edit Section Info" %>
+  <% var buttonText = "Update" %>
+<% } %>
+
+<h1><%= titleText %></h1>
+
+<p class='errors'></p>
+
+<form>
+  <input
+    id="title"
+    type="text"
+    name="section[name]"
+    placeholder="Name"
+    value="<%= model.escape("name") %>">
+
+  <input type="number" name="section[year]" value="<%= model.escape('year') %>">
+
+  <button class="submit"><%= buttonText %></button>
+</form>

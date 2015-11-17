@@ -67,7 +67,7 @@ input[type=number] {
   background: #eee;
   border: 1px solid #aaa;
   outline: none;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 input[type=text] {
@@ -76,7 +76,7 @@ input[type=text] {
 }
 
 input[type=number] {
-  width: 50px;
+  width: 75px;
   padding: 5px;
 }
 
@@ -88,6 +88,10 @@ input:focus {
  content: "";
  display: block;
  clear: both;
+}
+
+.hidden {
+  display: none;
 }
 
 button, input[type=submit] {

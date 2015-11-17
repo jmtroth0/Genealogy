@@ -4,9 +4,16 @@ Genealogy.Models.User = Backbone.Model.extend({
   type: "user",
 
   parse: function (payload) {
+    // students
     if (payload.section) {
       this.section(payload.section, {parse: true});
       delete payload.section;
+    }
+
+    // teachers
+    if (payload.sections) {
+      this.sections().set(payload.sections, { parse: true });
+      delete payload.sections;
     }
     return payload;
   },
@@ -25,6 +32,12 @@ Genealogy.Models.User = Backbone.Model.extend({
     }
 
     return this._section;
+  },
+
+  sections: function () {
+    this._sections = this._sections || new Genealogy.Collections.Sections([]);
+
+    return this._sections;
   },
 
   name: function () {

@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     resources :family_members, except: [:new, :edit]
     resources :photos, except: [:new, :edit]
     resources :documents, except: [:new, :edit]
+    resources :sections, only: [:show, :update, :create, :destroy]
+    resources :units, only: [:show, :update, :create, :destroy]
   end
 end

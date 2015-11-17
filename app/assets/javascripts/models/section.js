@@ -1,5 +1,7 @@
 Genealogy.Models.Section = Backbone.Model.extend ({
-  urlRoot: 'api/section',
+  urlRoot: 'api/sections',
+
+  type: 'section',
 
   parse: function (payload) {
     if (payload.units) {
