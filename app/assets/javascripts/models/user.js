@@ -4,9 +4,9 @@ Genealogy.Models.User = Backbone.Model.extend({
   type: "user",
 
   parse: function (payload) {
-    if (payload.family_members) {
-      this.family().set(payload.family_members);
-      delete payload.family_member;
+    if (payload.section) {
+      this.section(payload.section, {parse: true});
+      delete payload.section;
     }
     return payload;
   },
@@ -17,8 +17,18 @@ Genealogy.Models.User = Backbone.Model.extend({
     return this._family;
   },
 
+  section: function (section, options) {
+    if (section) {
+      this._section = new Genealogy.Models.Section(section, options);
+    } else {
+      this._section = this._section || new Genealogy.Models.Section();
+    }
+
+    return this._section;
+  },
+
   name: function () {
-    return this.fname + " " + this.lname;
+    return this.escape('fname') + " " + this.escape('lname');
   }
 });
 

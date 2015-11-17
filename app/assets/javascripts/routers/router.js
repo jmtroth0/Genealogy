@@ -11,11 +11,12 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     "family": "showFamily",
     "photos": "showPhotos",
     "documents": "showDocuments",
+    "units/:unit": "showUnit"
   },
 
   main: function() {
     var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
-    user.fetch({parse: true});
+    user.fetch({ parse: true });
     var view = new Genealogy.Views.UserMain({ model: user });
     this._swapView(view);
   },
@@ -40,6 +41,9 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     documents.fetch();
     var view = new Genealogy.Views.DocumentsIndex({ collection: documents });
     this._swapView(view);
+  },
+
+  showUnit: function (unit) {
   },
 
   _swapView: function (view) {

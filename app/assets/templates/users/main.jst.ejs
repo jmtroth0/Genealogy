@@ -1,12 +1,11 @@
-<h1 class="welcome-message">Hi <%= user.escape('name') %></h1>
-<h2><%=  user.get('section') && "Welcome to kitah " + user.get('section').name %></h2>
+<h1 class="welcome-message">Hi <%= user.name() %></h1>
+<h2><%= "Welcome to Kitah " + user.section().get('name') %></h2>
 <div class="nav-set">
   <ul class="nav-options group">
     <li class="nav group"><a href="#/family">Family</a></li>
     <li class="nav group"><a href="#/photos">Photos</a></li>
     <li class="nav group"><a href="#/documents">Documents</a></li>
-    <!-- <li class="nav group"><a href="#/treasures">Treasures</a></li>
-    <li class="nav group"><a href="#/stories">Stories</a></li>
-    <li class="nav group"><a href="#/recipes">Recipes</a></li> -->
   </ul>
+  <h3>Kitah Units</h3>
+  <ul class="section nav-options group"></ul>
 </div>
