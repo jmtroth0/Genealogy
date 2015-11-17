@@ -1,7 +1,6 @@
 module Api
   class Api::SectionsController < ApiController
     def index
-      # will be for teachers
       @sections = current_user.sections
     end
 
@@ -20,7 +19,7 @@ module Api
 
     def update
       @section = Section.find(params[:id])
-      if @section.save
+      if @section.update(section_params)
         render :show
       else
         render json: @section.errors.full_messages.join(", "), status: :unprocessable_entity
