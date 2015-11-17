@@ -1,6 +1,6 @@
-Backbone.PaperclipFormView = Backbone.FormView.extend({
+Genealogy.PaperclipFormView = Genealogy.FormView.extend({
   initialize: function (options) {
-    Backbone.FormView.prototype.initialize.call(this, options);
+    Genealogy.FormView.prototype.initialize.call(this, options);
     this.inputBlockName = '#input-' + this.model.type + "-" + this.model.attachmentType;
     var events = {};
     events["change " + this.inputBlockName] = "fileInputChange";

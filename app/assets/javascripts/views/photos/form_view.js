@@ -1,3 +1,3 @@
-Genealogy.Views.PhotoFormView = Backbone.PaperclipFormView.extend({
+Genealogy.Views.PhotoFormView = Genealogy.PaperclipFormView.extend({
   template: JST['photos/form'],
 });

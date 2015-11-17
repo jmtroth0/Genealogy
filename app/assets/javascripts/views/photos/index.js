@@ -1,4 +1,4 @@
-Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
+Genealogy.Views.PhotosIndex = Genealogy.IndexView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   className: 'photos-main-index',
@@ -12,7 +12,7 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
   },
 
   render: function () {
-    Backbone.IndexView.prototype.render.call(this);
+    Genealogy.IndexView.prototype.render.call(this);
     var $collection = this.$el.find('ul.collection-index');
     if ($collection.find('img').length === this.collection.length) {
       $collection.imagesLoaded(function() {
@@ -45,7 +45,7 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
 
   addModel: function (model) {
     var $collection = this.$el.find('ul.collection-index');
-    var itemView = Backbone.IndexView.prototype.addModel.call(this, model);
+    var itemView = Genealogy.IndexView.prototype.addModel.call(this, model);
     $collection.imagesLoaded(function() {
       $collection.masonry('appended', itemView.$el);
     }.bind(this));
@@ -61,7 +61,7 @@ Genealogy.Views.PhotosIndex = Backbone.IndexView.extend(
       .masonry('layout');
 
     setTimeout(function () {
-      Backbone.IndexView.prototype.removeModel.call(this, model, collection);
+      Genealogy.IndexView.prototype.removeModel.call(this, model, collection);
     }.bind(this), 0);
   }
 }));

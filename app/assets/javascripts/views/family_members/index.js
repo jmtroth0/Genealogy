@@ -1,4 +1,4 @@
-Genealogy.Views.FamilyIndex = Backbone.IndexView.extend(
+Genealogy.Views.FamilyIndex = Genealogy.IndexView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   className: 'family-main-index',
@@ -7,11 +7,11 @@ Genealogy.Views.FamilyIndex = Backbone.IndexView.extend(
     this.formViewType = Genealogy.Views.PersonFormView;
     this.indexItemView = Genealogy.Views.FamilyIndexItem;
 
-    Backbone.IndexView.prototype.initialize.call(this);
+    Genealogy.IndexView.prototype.initialize.call(this);
   },
 
   render: function () {
-    Backbone.IndexView.prototype.render.call(this);
+    Genealogy.IndexView.prototype.render.call(this);
 
     var $gens = this.$el.find('.collection-index').find('li.generation');
 

@@ -1,8 +1,8 @@
-Genealogy.Views.PersonFormView = Backbone.FormView.extend({
+Genealogy.Views.PersonFormView = Genealogy.FormView.extend({
   template: JST['family_members/form'],
 
   render: function () {
-    Backbone.FormView.prototype.render.call(this).addParentOptions();
+    Genealogy.FormView.prototype.render.call(this).addParentOptions();
     return this;
   },
 

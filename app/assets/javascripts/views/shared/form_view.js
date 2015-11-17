@@ -1,4 +1,4 @@
-Backbone.FormView = Backbone.View.extend({
+Genealogy.FormView = Backbone.View.extend({
   initialize: function (options){
     this.closeForm = options.closeCallback;
     this.addEvents({

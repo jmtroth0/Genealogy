@@ -1,4 +1,4 @@
-Genealogy.Views.FamilyIndexItem = Backbone.IndexItem.extend(
+Genealogy.Views.FamilyIndexItem = Genealogy.IndexItem.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['family_members/index_item'],

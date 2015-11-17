@@ -1,4 +1,4 @@
-Backbone.IndexView = Backbone.CompositeView.extend({
+Genealogy.IndexView = Backbone.CompositeView.extend({
 /*
 make sure to extend formModal mixin and
 declare formViewType and indexItemView

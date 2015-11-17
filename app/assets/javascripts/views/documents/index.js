@@ -1,4 +1,4 @@
-Genealogy.Views.DocumentsIndex = Backbone.IndexView.extend(
+Genealogy.Views.DocumentsIndex = Genealogy.IndexView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   className: 'documents-main-index',
@@ -7,6 +7,6 @@ Genealogy.Views.DocumentsIndex = Backbone.IndexView.extend(
     this.formViewType = Genealogy.Views.DocumentFormView;
     this.indexItemView = Genealogy.Views.DocumentIndexItem;
 
-    Backbone.IndexView.prototype.initialize.call(this);
+    Genealogy.IndexView.prototype.initialize.call(this);
   },
 }));

@@ -1,4 +1,4 @@
-Genealogy.Views.DocumentIndexItem = Backbone.IndexItem.extend(
+Genealogy.Views.DocumentIndexItem = Genealogy.IndexItem.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['documents/index_item'],

@@ -1,4 +1,4 @@
-Genealogy.Views.PhotoIndexItem = Backbone.IndexItem.extend(
+Genealogy.Views.PhotoIndexItem = Genealogy.IndexItem.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['photos/index_item'],
