@@ -32,17 +32,20 @@ Backbone.PaperclipFormView = Backbone.FormView.extend({
         } else {
           model.trigger("sync");
         }
+
         this.formPending = false;
         this.closeForm();
       }.bind(this),
       error: function (model, response) {
         var $errors = $('p.errors');
         $errors.html(response.responseText);
+
         if (this.status === "create") {
           $button.html("Upload");
         } else {
           $button.html("Update");
         }
+
         this.formPending = false;
       }
     });

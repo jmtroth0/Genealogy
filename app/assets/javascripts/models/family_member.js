@@ -17,7 +17,7 @@ Genealogy.Models.FamilyMember = Backbone.Model.extend({
     } else if (gen <= 2) {
       return this.generations[gen];
     } else if (gen > 2) {
-      return repeat("Great-", gen - 2) + "Grandparents";
+      return Genealogy.repeat("Great-", gen - 2) + "Grandparents";
     }
   },
 
