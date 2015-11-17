@@ -11,7 +11,7 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     "family": "showFamily",
     "photos": "showPhotos",
     "documents": "showDocuments",
-    "units/:unit": "showUnit"
+    "submissions/:unit": "showUnit"
   },
 
   main: function() {
