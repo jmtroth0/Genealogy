@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require genealogy
+//= require_tree ../../../vendor/assets/javascripts
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
