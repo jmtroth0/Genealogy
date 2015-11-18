@@ -21,8 +21,8 @@
     name="user[lname]"
     placeholder="Last Name"
     value="<%= @user.lname %>">
-
-  <select class="select-section" name="user[section_id]">
+  <label for="sections">Choose your Class!</label>
+  <select id="sections" class="select-section" name="user[section_id]">
     <option></option>
     <% @sections.each do |section| %>
       <option value="<%= section.id %>" <%= "selected" if section.id == @user.section_id %>>
