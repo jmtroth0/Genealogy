@@ -8,10 +8,9 @@ Genealogy is a place to store information about your family
 - [x] Add family members
 - [x] View added family members
 - [x] Paperclip photos, PDF files
-- [ ] Paperclip audio, video
-- [ ] Add text-based family stories
-- [ ] Family treasures (pdf and photo)
-- [ ] Family recipes (pdf)
+- [x] Teacher section to dynamically update section requirements
+- [ ] Multiple upload submissions to units
+- [ ] Search function for each section
 - [ ] Tag Family Members in Family Stories and Photos
 
 ## Design Docs
@@ -50,7 +49,8 @@ quantity of these --> Could end up being set # saved in server.
 Polymorphic join table tags. Include autocomplete search (parse with space);
 
 ### Bonus Features (TBD)
-- [ ] Make main page have dynamic choices by class to be defined by teacher
+- [ ] Paperclip audio
+- [ ] Video player
 - [ ] Auto send info to Family Echo on request
 - [ ] View family tree on Family Echo
 - [ ] Create own family tree engine using Google Visualization, Dracula, or equivalent

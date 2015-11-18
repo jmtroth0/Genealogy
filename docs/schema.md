@@ -59,7 +59,7 @@ column name   | data type | details
 --------------|-----------|-----------------------
 id            | integer   | not null, primary key
 submission_id | integer   | not null
-upload        | references| polymorphic, not null
+upload        | reference | polymorphic, not null
 
 ## Photos
 column name    | data type | details
