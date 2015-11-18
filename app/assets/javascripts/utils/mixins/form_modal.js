@@ -3,8 +3,8 @@ Genealogy.Mixins.FormModal = {
     if (this.$el.find('section.form-modal').length !== 0) { return; }
 
     var model = options.model || this.model || new this.collection.model();
-    var collection = this.collection || this.model.collection;
-
+    var collection = options.collection || this.collection || model.collection;
+    debugger
     this.formView = new this.formViewType({
       model: model,
       collection: collection,
