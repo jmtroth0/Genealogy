@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116051054) do
+ActiveRecord::Schema.define(version: 20151118212542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,28 @@ ActiveRecord::Schema.define(version: 20151116051054) do
 
   add_index "sections", ["name"], name: "index_sections_on_name", unique: true, using: :btree
   add_index "sections", ["teacher_id"], name: "index_sections_on_teacher_id", using: :btree
+
+  create_table "submission_uploads", force: :cascade do |t|
+    t.integer  "submission_id", null: false
+    t.integer  "upload_id",     null: false
+    t.string   "upload_type",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "submission_uploads", ["submission_id", "upload_type", "upload_id"], name: "index_submission_uploads_on_submission_id_and_upload", using: :btree
+
+  create_table "submissions", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id",     null: false
+    t.integer  "unit_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "submissions", ["unit_id"], name: "index_submissions_on_unit_id", using: :btree
+  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "family_member_id", null: false
