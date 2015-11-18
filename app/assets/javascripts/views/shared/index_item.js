@@ -1,4 +1,4 @@
-Genealogy.IndexItem = Backbone.CompositeView.extend ({
+Genealogy.Views.IndexItem = Backbone.CompositeView.extend ({
   initializeItem: function (options) {
     this.listenTo(this.model, 'sync', this.render);
     this.addEvents({

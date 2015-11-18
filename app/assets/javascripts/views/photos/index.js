@@ -21,7 +21,6 @@ Genealogy.Views.PhotosIndex = Genealogy.IndexView.extend(
     }
 
     this.adjustCollectionWidth();
-
     return this;
   },
 

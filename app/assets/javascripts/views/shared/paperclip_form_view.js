@@ -1,6 +1,6 @@
-Genealogy.PaperclipFormView = Genealogy.FormView.extend({
+Genealogy.PaperclipFormView = Genealogy.Views.FormView.extend({
   initialize: function (options) {
-    Genealogy.FormView.prototype.initialize.call(this, options);
+    Genealogy.Views.FormView.prototype.initialize.call(this, options);
     this.inputBlockName = '#input-' + this.model.type + "-" + this.model.attachmentType;
     var events = {};
     events["change " + this.inputBlockName] = "fileInputChange";

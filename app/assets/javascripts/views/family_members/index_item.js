@@ -1,4 +1,4 @@
-Genealogy.Views.FamilyIndexItem = Genealogy.IndexItem.extend(
+Genealogy.Views.FamilyIndexItem = Genealogy.Views.IndexItem.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   template: JST['family_members/index_item'],

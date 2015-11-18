@@ -1,8 +1,8 @@
-Genealogy.Views.PersonFormView = Genealogy.FormView.extend({
+Genealogy.Views.PersonFormView = Genealogy.Views.FormView.extend({
   template: JST['family_members/form'],
 
   render: function () {
-    Genealogy.FormView.prototype.render.call(this).addParentOptions();
+    Genealogy.Views.FormView.prototype.render.call(this).addParentOptions();
     return this;
   },
 

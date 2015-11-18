@@ -1,4 +1,4 @@
-Genealogy.FormView = Backbone.View.extend({
+Genealogy.Views.FormView = Backbone.View.extend({
   initialize: function (options){
     this.closeForm = options.closeCallback;
     this.addEvents({
@@ -23,8 +23,8 @@ Genealogy.FormView = Backbone.View.extend({
     e.preventDefault();
     if (this.formPending) { return; }
     this.formPending = true;
-
-    var attrs = this.getAttrs(e)[this.model.type];
+    debugger
+    var attrs = this.getAttrs(e)[this.collection.type];
     if (this.status === "create") { this.collection.add(this.model); }
 
     var $button = $(e.target).find('button.submit');
