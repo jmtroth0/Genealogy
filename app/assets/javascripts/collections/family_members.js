@@ -1,6 +1,7 @@
 Genealogy.Collections.FamilyMembers = Backbone.Collection.extend({
   model: Genealogy.Models.FamilyMember,
   url: 'api/family_members',
+  type: 'family_member',
 
 // when adding age to attributes, add that facet
   comparator: function (person, otherPerson) {
