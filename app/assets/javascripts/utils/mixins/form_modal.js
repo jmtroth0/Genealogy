@@ -4,7 +4,7 @@ Genealogy.Mixins.FormModal = {
 
     var model = options.model || this.model || new this.collection.model();
     var collection = options.collection || this.collection || model.collection;
-    debugger
+    
     this.formView = new this.formViewType({
       model: model,
       collection: collection,

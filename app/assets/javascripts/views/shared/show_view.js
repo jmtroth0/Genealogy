@@ -1,16 +1,15 @@
 Genealogy.Views.ShowView = Backbone.CompositeView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
-  events: {
-    "click .close-modal": "close",
-    "click .edit": "openForm",
-    "click .next-section": "switchToNext",
-    "click .previous-section": "switchToPrevious",
-  },
-
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     $(document).on('keyup', this.keyHandler.bind(this));
+    this.addEvents({
+      "click .close-modal": "close",
+      "click .edit": "openForm",
+      "click .next-section": "switchToNext",
+      "click .previous-section": "switchToPrevious",
+    });
   },
 
   switchToNext: function (e) {
@@ -41,7 +40,6 @@ Genealogy.Views.ShowView = Backbone.CompositeView.extend(
   },
 
   remove: function () {
-    $(window).off("resize", this.adjustPhotoSize);
     $(document).off('keyup', this.keyHandler.bind(this));
     Backbone.View.prototype.remove.apply(this, arguments);
   }
