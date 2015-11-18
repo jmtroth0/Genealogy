@@ -1,5 +1,5 @@
 Genealogy.Models.Unit = Backbone.Model.extend ({
-  urlRoot: 'api/unit',
+  urlRoot: 'api/units',
 
   type: 'unit',
 });

@@ -23,7 +23,7 @@ Genealogy.Views.FormView = Backbone.View.extend({
     e.preventDefault();
     if (this.formPending) { return; }
     this.formPending = true;
-    debugger
+
     var attrs = this.getAttrs(e)[this.collection.type];
     if (this.status === "create") { this.collection.add(this.model); }
 

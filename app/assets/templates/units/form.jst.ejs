@@ -1,0 +1,26 @@
+<% if (status === "create") { %>
+  <% var titleText = "Create Unit" %>
+  <% var buttonText = "Create" %>
+<% } else { %>
+  <% var titleText = "Edit Unit Info" %>
+  <% var buttonText = "Update" %>
+<% } %>
+
+<h1><%= titleText %></h1>
+
+<p class='errors'></p>
+
+<form>
+  <input
+    id="title"
+    type="text"
+    name="unit[name]"
+    placeholder="Name"
+    value="<%= model.escape("name") %>">
+
+  <textarea name="unit[description]"><%= model.escape("description") %></textarea>
+
+  <input type="hidden" name="unit[section_id]" value="<%= section_id %>">
+
+  <button class="submit"><%= buttonText %></button>
+</form>
