@@ -16,9 +16,18 @@ Genealogy.Routers.Router = Backbone.Router.extend({
 
   main: function() {
     var user = Genealogy.currentUser = Genealogy.currentUser || new Genealogy.Models.CurrentUser();
-    user.fetch({ parse: true });
-    var view = new Genealogy.Views.UserMain({ model: user });
-    this._swapView(view);
+    user.fetch({
+      parse: true,
+      success: function () {
+        var view;
+        if (user.escape('type') === 'Student') {
+          view = new Genealogy.Views.StudentMain({ model: user });
+        } else if (user.escape('type') === 'Teacher') {
+          view = new Genealogy.Views.TeacherMain({ model: user });
+        } // add admin page
+        this._swapView(view);
+      }.bind(this)
+    });
   },
 
   showFamily: function () {
