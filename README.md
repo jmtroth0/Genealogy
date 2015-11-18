@@ -8,12 +8,15 @@
 
 ## Features
 
+>Teacher page to create new units for any of their sections
+
 >Photo and PDF upload
->Teacher page to create new units and 
+
+>Family Member categorization
 
 ## Techs
 
->Built on a Ruby on Rails API as a Backbone single-page app.
+>Built on a Ruby on Rails API as a Backbone.js single-page app.
 
 >Paperclip for file upload and AWS S3 for storage.
 
