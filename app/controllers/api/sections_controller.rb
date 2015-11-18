@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      @section = current_user.section.new(section_params)
+      @section = current_user.sections.new(section_params)
       if @section.save
         render :show
       else

@@ -1,66 +1,57 @@
-Genealogy.Views.ShowSection = Backbone.CompositeView.extend(
+Genealogy.Views.ShowSection = Genealogy.Views.ShowView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
-  template: JST['photos/show'],
-  className: "photo-show-container",
-  formViewType: Genealogy.Views.PhotoFormView,
-
-  events: {
-    "click .close-modal": "close",
-    "click .edit": "openForm",
-    "click .next-section": "switchToNext",
-    "click .previous-section": "switchToPrevious",
-  },
-
-  initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
-    $(document).on('keyup', this.keyHandler.bind(this));
-  },
+  template: JST['sections/show'],
+  className: "section-show-container",
+  formViewType: Genealogy.Views.SectionFormView,
 
   render: function () {
-    var content = this.template({ photo: this.model });
+    var content = this.template({ section: this.model });
     this.$el.html(this.makeModal({ content: content }));
-    $(window).on('resize', this.adjustPhotoSize.bind(this));
-    this.adjustPhotoSize();
-    this.$el.find('article.content').addClass('group');
+    this.model.units().forEach(function(unit) {
+      this.placeUnit(unit);
+    }.bind(this));
     return this;
   },
 
-  switchToNext: function (e) {
+  placeUnit: function (unit) {
+    var modelView = new Genealogy.Views.UnitIndexItem({
+      model: unit,
+      remove: this.removeModel.bind(this)
+    });
+    this.addSubview('ul.units-list', modelView);
+    return modelView;
+  },
+
+  removeModel: function (model, collection) {
+    this.removeModelSubview('ul.units-list', model);
+  },
+
+  openUnit: function (e) {
     e.preventDefault();
-    this.model = this.model.getNextModel();
-    this.render();
+    var unit = this.model.units().getOrFetch($(e.target).data('unit-id'));
+    this.openUnitModal(unit);
   },
 
-  switchToPrevious: function (e) {
+  openUnitModal: function (unit) {
+    if (this.$el.find('unit.modal').length !== 0) { return; }
+    var unitShow = new Genealogy.Views.ShowUnit({
+      model: unit
+    });
+    $('#backdrop').prepend(unitShow.render().$el);
+  },
+
+  editUnit: function (e) {
     e.preventDefault();
-    this.model = this.model.getPreviousModel();
-    this.render();
+    var unit = this.model.units().getOrFetch($(e.currentTarget).data('unit-id'));
+    this.openForm({model: unit});
   },
 
-  keyHandler: function (e) {
-    if (e.keyCode === 39) {
-      this.switchToNext(e);
-    } else if (e.keyCode === 37) {
-      this.switchToPrevious(e);
-    }
-  },
-
-  adjustPhotoSize: function () {
-    var $img = this.$el.find('img');
-    var width = window.innerWidth * 0.55;
-    var height = window.innerHeight * 0.6;
-    $img.css('max-width', width);
-    $img.css('max-height', height);
-  },
-
-  close: function () {
-    this.remove();
-  },
-
-  remove: function () {
-    $(window).off("resize", this.adjustPhotoSize);
-    $(document).off('keyup', this.keyHandler.bind(this));
-    Backbone.View.prototype.remove.apply(this, arguments);
+  newUnit: function (e) {
+    e.preventDefault();
+    this.openForm({
+      model: new Genealogy.Models.Unit(),
+      collection: this.model.units()
+    });
   }
 }));

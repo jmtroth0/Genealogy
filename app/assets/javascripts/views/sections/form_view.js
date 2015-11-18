@@ -1,3 +1,3 @@
-Genealogy.Views.SectionFormView = Genealogy.FormView.extend({
+Genealogy.Views.SectionFormView = Genealogy.Views.FormView.extend({
   template: JST['sections/form'],
 });
