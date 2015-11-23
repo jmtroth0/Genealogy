@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :documents, except: [:new, :edit]
 
     resources :sections, only: [:show, :update, :create, :destroy]
-    resources :units, only: [:show, :update, :create, :destroy]
+    resources :units, only: [:show, :update, :create, :destroy] do
+      resources :submissions, except: [:edit, :new]
+    end
   end
 end
