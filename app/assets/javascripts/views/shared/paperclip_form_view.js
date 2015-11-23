@@ -32,7 +32,6 @@ Genealogy.PaperclipFormView = Genealogy.Views.FormView.extend({
         } else {
           model.trigger("sync");
         }
-
         this.formPending = false;
         this.closeForm();
       }.bind(this),

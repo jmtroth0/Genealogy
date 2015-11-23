@@ -14,7 +14,6 @@ on extensions
   initialize: function () {
     this.listenTo(this.collection, 'add', this.addModel);
     this.listenTo(this.collection, 'remove', this.removeModel);
-    this.listenTo(this.collection, 'sync', this.render);
   },
 
   render: function () {

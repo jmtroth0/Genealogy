@@ -2,12 +2,12 @@
 <html>
 <body>
   <object data="<%= model.escape('file_url') %>" type="application/pdf">
-    <embed src="<%= model.escape('file_url') %>" type="application/pdf" />
+    <embed src="<%= model.escape('file_url') %>" type="application/pdf">
   </object>
 </body>
 </html>
 <div class="button-set">
-  <a href="<%= model.escape('file_url') %>">Open</a>
+  <a href="<%= model.escape('file_url') %>" target="_blank">Open</a>
   <button class="delete">Delete</button>
   <button class="edit">Edit</button>
 </div>
