@@ -1,1 +1,1 @@
-json.partial! 'submission', submission: submission
+json.partial! 'submission', submission: @submission
