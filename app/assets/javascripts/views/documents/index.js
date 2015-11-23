@@ -1,7 +1,7 @@
 Genealogy.Views.DocumentsIndex = Genealogy.Views.IndexView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
-  className: 'documents-main-index',
+  className: 'documents-main-index group',
 
   initialize: function (options) {
     this.formViewType = Genealogy.Views.DocumentFormView;

@@ -3,7 +3,7 @@ Genealogy.Views.DocumentIndexItem = Genealogy.Views.IndexItem.extend(
 
   template: JST['documents/index_item'],
   tagName: 'li',
-  className: 'document-member',
+  className: 'document-member group',
 
   initialize: function (options) {
     this.formViewType = Genealogy.Views.DocumentFormView;
