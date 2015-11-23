@@ -3,6 +3,13 @@ class Submission < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :unit
-  has_many :submission_uploads, class_name: 'SubmissionUploads'
-  has_many :uploads, through: :submission_uploads, source: :uploads
+  has_many :submission_uploads, class_name: 'SubmissionUpload', dependent: :destroy
+  has_many :photos,
+    through: :submission_uploads,
+    source: :upload,
+    source_type: 'Photo'
+  has_many :documents,
+    through: :submission_uploads,
+    source: :upload,
+    source_type: 'Document'
 end
