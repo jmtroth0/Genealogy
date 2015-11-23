@@ -20,7 +20,6 @@ Genealogy.Views.IndexItem = Backbone.CompositeView.extend ({
     this.destructionPending = true;
 
     this.model.destroy({
-      wait: true,
       success: function (model) {
         if (options && options.success) options.success();
         this.removeCallback(model);

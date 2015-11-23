@@ -1,4 +1,4 @@
-Genealogy.Views.PhotosIndex = Genealogy.IndexView.extend(
+Genealogy.Views.PhotosIndex = Genealogy.Views.IndexView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   className: 'photos-main-index',
@@ -12,7 +12,7 @@ Genealogy.Views.PhotosIndex = Genealogy.IndexView.extend(
   },
 
   render: function () {
-    Genealogy.IndexView.prototype.render.call(this);
+    Genealogy.Views.IndexView.prototype.render.call(this);
     var $collection = this.$el.find('ul.collection-index');
     if ($collection.find('img').length === this.collection.length) {
       $collection.imagesLoaded(function() {
@@ -44,7 +44,7 @@ Genealogy.Views.PhotosIndex = Genealogy.IndexView.extend(
 
   addModel: function (model) {
     var $collection = this.$el.find('ul.collection-index');
-    var itemView = Genealogy.IndexView.prototype.addModel.call(this, model);
+    var itemView = Genealogy.Views.IndexView.prototype.addModel.call(this, model);
     $collection.imagesLoaded(function() {
       $collection.masonry('appended', itemView.$el);
     }.bind(this));
@@ -60,7 +60,7 @@ Genealogy.Views.PhotosIndex = Genealogy.IndexView.extend(
       .masonry('layout');
 
     setTimeout(function () {
-      Genealogy.IndexView.prototype.removeModel.call(this, model, collection);
+      Genealogy.Views.IndexView.prototype.removeModel.call(this, model, collection);
     }.bind(this), 0);
   }
 }));

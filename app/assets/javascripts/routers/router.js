@@ -11,7 +11,7 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     "family": "showFamily",
     "photos": "showPhotos",
     "documents": "showDocuments",
-    "submissions/:unit": "showUnit"
+    "submissions/:unit/:unit_id": "showUnit"
   },
 
   main: function() {
@@ -52,7 +52,11 @@ Genealogy.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  showUnit: function (unit) {
+  showUnit: function (unit, unit_id) {
+    var submissions = new Genealogy.Collections.Submissions(unit_id);
+    submissions.fetch();
+    var view = new Genealogy.Views.SubmissionsIndex({ collection: submissions });
+    this._swapView(view);
   },
 
   _swapView: function (view) {

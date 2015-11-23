@@ -1,0 +1,26 @@
+<% if (status === "create") { %>
+  <% var titleText = "Create Submission" %>
+  <% var buttonText = "Create" %>
+<% } else { %>
+  <% var titleText = "Edit Submission" %>
+  <% var buttonText = "Update" %>
+<% } %>
+
+<h1><%= titleText %></h1>
+
+<p class='errors'></p>
+
+<form>
+  <input
+    id="title"
+    type="text"
+    name="submission[title]"
+    placeholder="Title"
+    value="<%= model.escape("title") %>">
+
+  <textarea id="description" name="submission[description]">
+    <%= model.escape('description') %>
+  </textarea>
+
+  <button class="submit"><%= buttonText %></button>
+</form>

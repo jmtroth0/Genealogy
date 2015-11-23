@@ -1,4 +1,4 @@
-Genealogy.Views.DocumentsIndex = Genealogy.IndexView.extend(
+Genealogy.Views.DocumentsIndex = Genealogy.Views.IndexView.extend(
   _.extend({}, Genealogy.Mixins.FormModal, {
 
   className: 'documents-main-index',
@@ -7,6 +7,6 @@ Genealogy.Views.DocumentsIndex = Genealogy.IndexView.extend(
     this.formViewType = Genealogy.Views.DocumentFormView;
     this.indexItemView = Genealogy.Views.DocumentIndexItem;
 
-    Genealogy.IndexView.prototype.initialize.call(this);
+    Genealogy.Views.IndexView.prototype.initialize.call(this);
   },
 }));

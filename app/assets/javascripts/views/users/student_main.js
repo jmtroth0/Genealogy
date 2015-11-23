@@ -16,7 +16,7 @@ Genealogy.Views.StudentMain = Backbone.CompositeView.extend({
     var $sectionUnits = this.$el.find('.section.nav-options');
     this.model.section().units().forEach(function(unit){
       var $unit = $('<li class="nav group">' +
-        '<a href="#/submissions/' + unit.escape('name') + '">' +
+        '<a href="#/submissions/' + unit.escape('name').toLowerCase() + '/' + unit.id + '">' +
         unit.escape('name') + '</a></li>');
       $sectionUnits.append($unit);
     });
