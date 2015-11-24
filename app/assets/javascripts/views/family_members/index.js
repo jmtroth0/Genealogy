@@ -6,7 +6,7 @@ Genealogy.Views.FamilyIndex = Genealogy.Views.IndexView.extend(
   initialize: function (options) {
     this.formViewType = Genealogy.Views.PersonFormView;
     this.indexItemView = Genealogy.Views.FamilyIndexItem;
-
+    this.listenTo(this.collection, 'sync', this.render);
     Genealogy.Views.IndexView.prototype.initialize.call(this);
   },
 
