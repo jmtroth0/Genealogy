@@ -1,4 +1,5 @@
 <h1 class="title"><%= model.escape('title') %></h1>
+
 <html>
 <body>
   <object data="<%= model.escape('file_url') %>" type="application/pdf">
@@ -6,6 +7,7 @@
   </object>
 </body>
 </html>
+
 <div class="button-set">
   <a href="<%= model.escape('file_url') %>" target="_blank">Open</a>
   <button class="delete">Delete</button>
