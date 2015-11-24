@@ -1,6 +1,5 @@
 Genealogy.Views.Header = Backbone.View.extend({
   template: JST['shared/header'],
-  className: 'header-container',
 
   events: {
     'click button.sign-out': 'signOut',

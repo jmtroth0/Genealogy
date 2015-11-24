@@ -6,7 +6,7 @@
 <script type="text/javascript">
   <% if signed_in? %>
     $(document).ready(function(){
-      Genealogy.initialize();
+      Genealogy.initialize({ logo: "<%= image_url('logo.png') %>"});
     });
   <% end %>
 </script>

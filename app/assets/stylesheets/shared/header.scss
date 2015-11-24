@@ -2,12 +2,22 @@ div.header-container {
   background: #cbfdcb;
   height: 40px;
   border-bottom: 1px solid #ccc;
-}
-
-div.header {
-  width: 80%;
-  margin: 0 auto;
   position: relative;
+
+  div.header {
+    width: 80%;
+    height: inherit;
+    margin: 0 auto;
+    position: relative;
+
+    a.logo {
+      background: transparent;
+
+      img {
+        height: 40px;
+      }
+    }
+  }
 }
 
 form.sign-out {
